@@ -1,4 +1,4 @@
-# Khen Mini Market
+# Langship မြန်မာကုန်စုံဆိုင်
 
-မြန်မာကုန်စုံဆိုင်
-Oklahoma City's Burmese Grocery Store
+
+## Oklahoma City's Burmese Grocery Store

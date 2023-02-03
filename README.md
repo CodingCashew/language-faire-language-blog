@@ -1,4 +1,2 @@
-# Langship မြန်မာကုန်စုံဆိုင်
+# Language Blog
 
-
-## Oklahoma City's Burmese Grocery Store

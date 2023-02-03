@@ -12,7 +12,7 @@ export default function Home({characters}: any) {
         <meta name="description" content="Langship" />
         <link rel="icon" href="../logo.png" />
       </Head>
-      {JSON.stringify(characters)}
+      {/* {JSON.stringify(characters)} */}
     </div>
   )
 }

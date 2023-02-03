@@ -1,62 +1,47 @@
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import clientPromise from "../lib/mongodb";
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-// export default function Blog({articles}: any) {
-//   return (
-//     <div className={styles.container}>
-//       <Head>
-//         <title className={styles.myClass}>Langship</title>
-//         <meta name="description" content="Langship" />
-//         <link rel="icon" href="../logo.png" />
-//       </Head>
-//       {JSON.stringify(articles)}
-//     </div>
-//   )
-// }
-
-export default async function handler(req, res) {
-  const client = await clientPromise;
-  const db = client.db("nextjs-mongodb-demo");
-  switch (req.method) {
-    case "POST":
-      let bodyObject = JSON.parse(req.body);
-      let myPost = await db.collection("articles").insertOne(bodyObject);
-      res.json(myPost.ops[0]);
-      break;
-    case "GET":
-      const allPosts = await db.collection("artivles").find({}).toArray();
-      res.json({ status: 200, data: allPosts });
-      break;
-  }
+export interface Article {
+  _id: number;
+  title: string;
+  article_content: string;
 }
 
+export default function Blog({articles}: any) {
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title className={styles.myClass}>Langship</title>
+        <meta name="description" content="Langship" />
+        <link rel="icon" href="../logo.png" />
+      </Head>
+      {'My Lovely Articles:'}
+      <ul className='articles'>
+        {articles.map((article: Article) => (
+          <>
+            <h3>{article.title}</h3>
+            <li key={article._id}>{article.article_content}</li>
+          </>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
-
-export async function getServerSideProps(context) {
-  let res = await fetch("http://localhost:3000/blog", {
+export async function getServerSideProps(context: any) {
+  console.log('in getSSP')
+  let res = await fetch("http://localhost:3000/api/articles", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  let allPosts = await res.json();
-
+  let articles = await res.json();
+  console.log('articles: ', articles, 'typeof articles: ', typeof articles)
   return {
-    props: { allPosts },
+    props: { articles },
   };
 }
 
-
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const res = await fetch('');
-//   const { results } = await res.json();
-
-//   return {
-//     props: {
-//       articles: results,
-//     }
-//   }
-// }

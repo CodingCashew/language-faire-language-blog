@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+.articles {
+  list-style-type: none;
+}
+
 * {
   box-sizing: border-box;
 }

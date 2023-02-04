@@ -1,5 +1,11 @@
+import { Container } from "@chakra-ui/react";
+
 function About() {
-  return <h1>About Langship</h1>
+  return (
+    <Container maxW='xl'>
+      <h1>About LangBlog</h1>
+    </Container>
+  )
 }
 
 export default About

@@ -2,7 +2,8 @@ import { GetStaticProps, NextPage } from "next";
 import clientPromise from "../lib/mongodb";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Container } from "@chakra-ui/react";
+import { Container, Flex, Input, Button } from "@chakra-ui/react";
+import { useState } from "react";
 
 export interface Article {
   _id: number;
@@ -11,6 +12,29 @@ export interface Article {
 }
 
 export default function Blog({ articles }: any) {
+  const [searchValue, setSearchValue] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+  const handleChange = e => {
+    console.log(e.target.value)
+    setSearchValue(e.target.value)
+  }
+
+  const searchArticles = () => {
+    console.log('in searchArticles')
+    fetch('/api/searchArticles', {
+      method: 'POST',
+      body: JSON.stringify({ searchValue }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data before setting:', data)
+        setFilteredData(data)
+      })
+      .catch((err) => console.log(err));
+      console.log('filteredData:', filteredData)
+    }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,6 +43,12 @@ export default function Blog({ articles }: any) {
         <link rel="icon" href="../logo.png" />
       </Head>
       <Container maxW="xl">
+        <Flex m="5">
+          <Input placeholder="Search Articles..." onChange={handleChange}/>
+          <Button bg="purple3" color="white" size="md" ml="3" onClick={searchArticles}>
+            Search
+          </Button>
+        </Flex>
         {"My Lovely Articles:"}
         <ul className="articles">
           {articles.map((article: Article) => (
@@ -44,7 +74,6 @@ export async function getServerSideProps(context: any) {
     },
   });
   let articles = await res.json();
-  console.log("articles: ", articles, "typeof articles: ", typeof articles);
   return {
     props: { articles },
   };

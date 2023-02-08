@@ -28,8 +28,9 @@ export default function Blog({ articles }: any) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('data before setting:', data)
+        
         setFilteredData(data)
+        
       })
       .catch((err) => console.log(err));
       console.log('filteredData:', filteredData)
@@ -50,7 +51,7 @@ export default function Blog({ articles }: any) {
           </Button>
         </Flex>
         {"My Lovely Articles:"}
-        <ul className="articles">
+        {!filteredData.length && <ul className="articles">
           {articles.map((article: Article) => (
             <>
               <h3>{article.title}</h3>
@@ -59,7 +60,17 @@ export default function Blog({ articles }: any) {
               </li>
             </>
           ))}
-        </ul>
+        </ul>}
+        {filteredData && <ul className="articles">
+          {filteredData.map((article: Article) => (
+            <>
+              <h3>{article.title}</h3>
+              <li key={article._id} className="article">
+                {article.article_content}
+              </li>
+            </>
+          ))}
+        </ul>}
       </Container>
     </div>
   );

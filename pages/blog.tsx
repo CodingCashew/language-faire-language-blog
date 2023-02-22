@@ -46,7 +46,7 @@ export default function Blog({ articles }: any) {
       <Container maxW="xl">
         <Flex m="5">
           <Input placeholder="Search Articles..." onChange={handleChange}/>
-          <Button bg="purple3" color="white" size="md" ml="3" onClick={searchArticles}>
+          <Button bg="primary.main" color="white" size="md" ml="3" onClick={searchArticles}>
             Search
           </Button>
         </Flex>

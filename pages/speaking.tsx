@@ -1,10 +1,10 @@
 import { Container, Stack, Button, Link } from "@chakra-ui/react";
 
-function Resources() {
+function Speaking() {
   return (
     <Container maxW="xl">
-      <h1>Language Learning Resources</h1>
-      <Stack spacing={4} direction="row" align="center">
+      <h1>Speaking Practice</h1>
+      {/* <Stack spacing={4} direction="row" align="center">
         <Link href="/resources/category1">
           <Button
             bg="purple3"
@@ -21,9 +21,9 @@ function Resources() {
             Category 2
           </Button>
         </Link>
-      </Stack>
+      </Stack> */}
     </Container>
   );
 }
 
-export default Resources;
+export default Speaking;

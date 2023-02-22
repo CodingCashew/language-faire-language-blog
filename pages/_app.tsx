@@ -8,12 +8,22 @@ import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
   colors: {
-    teal: '#4FD1C5',
-    teal2: '#81E6D9',
-    teal3: '#2C7A7B',
-    purple: '#9F7AEA',
-    purple2: '#B794F4',
-    purple3: '#553C9A',
+    primary: {
+      light: '#ED64A6',
+      main: '#D53F8C',
+      dark: '#97266D',
+      // light: '#0BC5EA',
+      // main: '#00A3C4',
+      // dark: '#086F83',
+    },
+    secondary: {
+      light: '#F6E05E',
+      main: '#ECC94B',
+      dark: '#D69E2E',
+      // light: '#68D391',
+      // main: '#38A169',
+      // dark: '#276749',
+    }
   },
   fonts: {
     body: "system-ui, sans-serif",

@@ -1,12 +1,12 @@
 import { Container } from "@chakra-ui/react";
 
-function About() {
+function Writing() {
   return (
     <Container maxW='xl'>
-      <h1>About LangBlog</h1>
+      <h1>Writing Practice</h1>
     </Container>
   )
 }
 
-export default About
+export default Writing
 

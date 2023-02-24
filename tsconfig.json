@@ -16,6 +16,6 @@
     "incremental": true,
     "sourceMap": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.ts", "pages/api/articles.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.ts", "pages/api/articles.js", "pages/vocab/[id].js"],
   "exclude": ["node_modules"]
 }

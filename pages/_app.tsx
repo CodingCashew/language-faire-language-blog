@@ -1,42 +1,158 @@
-import { ChakraProvider } from '@chakra-ui/react'
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import type { NextPage } from 'next'
-import Navbar from '../components/navbar'
+import {
+  Box,
+  Button,
+  ChakraProvider,
+  Container,
+  Text,
+  Image,
+  Link,
+} from "@chakra-ui/react";
+import { ArrowRightIcon } from "@chakra-ui/icons";
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import type { NextPage } from "next";
+import Navbar from "../components/navbar";
 
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   colors: {
     primary: {
-      light: '#ED64A6',
-      main: '#D53F8C',
-      dark: '#97266D',
+      light: "#ED64A6",
+      main: "#D53F8C",
+      dark: "#97266D",
       // light: '#0BC5EA',
       // main: '#00A3C4',
       // dark: '#086F83',
     },
     secondary: {
-      light: '#F6E05E',
-      main: '#ECC94B',
-      dark: '#D69E2E',
+      light: "#F6E05E",
+      main: "#ECC94B",
+      dark: "#D69E2E",
       // light: '#68D391',
       // main: '#38A169',
       // dark: '#276749',
-    }
+    },
   },
   fonts: {
     body: "system-ui, sans-serif",
     heading: "Lato, sans-serif",
     mono: "Menlo, monospace",
-  }
-})
+  },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
       <Component {...pageProps} />
+      <div theme={theme.colors}>
+        <Box w="100%" h="100%" bgGradient="linear(to-br, #4FD1C5, #9F7AEA)">
+          <Container
+            maxW="4xl"
+            minHeight="md"
+            color="white"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Image
+              borderRadius="5px"
+              boxSize="65%"
+              src="/blogArticleThumbnail.avif"
+              alt="learning English"
+            />
+            <Text fontSize="3xl" textAlign={["left"]} marginLeft="1em">
+              Follow your heart and speak English today!{" "}
+            </Text>
+          </Container>
+        </Box>
+        <Box w="100%" h="100%" bgColor="white">
+          <Container maxW="4xl" minHeight="sm" align="center" color="#4FD1C5">
+            <Text
+              fontSize="3xl"
+              maxW="2xl"
+              textAlign={["left", "center"]}
+              marginY="1em"
+            >
+              Explore new worlds and possibilities by learning English from the
+              convenience of your own home.
+            </Text>
+            <Container
+              maxW="4xl"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              justifyContent="space-between"
+              marginBottom="1rem"
+            >
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+            </Container>
+          </Container>
+        </Box>
+        <Box w="100%" h="100%" bgColor="#D6BCFA">
+          <Container
+            maxW="3xl"
+            minHeight="lg"
+            color="white"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Text fontSize="3xl" textAlign={["right"]} marginRight="1.5em">
+              Follow Your Heart English helps you reach your goals!
+            </Text>
+            <Image
+              borderRadius="5px"
+              boxSize="70%"
+              maxH="md"
+              src="/blogArticleThumbnail.avif"
+              alt="learning English"
+            />
+          </Container>
+        </Box>
+        <Box w="100%" h="sm" bgGradient="linear(to-l, #38B2AC,#B794F4)">
+          <Container
+            maxW="3xl"
+            minHeight="sm"
+            color="white"
+            display="flex"
+            alignItems="center"
+          >
+            <Text fontSize="3xl" textAlign={["left", "center"]} paddingY="1rem">
+              Join Our Community of Passionate English Learners!
+            </Text>
+            <Button
+              bgColor="#D6BCFA"
+              color="white"
+              justifyContent="center"
+              paddingX="3em"
+              paddingY="1.35em"
+            >
+              <Link href="/signup">
+                <ArrowRightIcon marginRight=".5rem" /> Create a New Account
+              </Link>
+            </Button>
+          </Container>
+        </Box>
+      </div>
     </ChakraProvider>
-  )
+  );
 }

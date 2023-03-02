@@ -19,7 +19,7 @@ function Vocab() {
           <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
             <text>Family Vocabulary</text>
-            <Link href="/vocab/prac1">
+            <Link href="/vocab/vocab1">
               <Button bgColor="primary.main" m="1rem" color="white">
                 Learn Vocab
               </Button>
@@ -30,7 +30,7 @@ function Vocab() {
           <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
             <text>Cooking Vocabulary</text>
-            <Link href="/vocab/prac1">
+            <Link href="/vocab/vocab2">
               <Button bgColor="primary.main" m="1rem" color="white">
                 Learn Vocab
               </Button>

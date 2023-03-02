@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
-import theme from "../pages/_app";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -22,10 +21,10 @@ export default function Navbar() {
           </Link>
           {/* <Link href="/writing" className="links">
             <Text fontSize="lg" color="primary.main">Writing</Text>
-          </Link>
+          </Link> */}
           <Link href="/grammar" className="links">
             <Text fontSize="lg" color="primary.main">Grammar</Text>
-          </Link> */}
+          </Link>
           <Link href="/vocab" className="links">
             <Text fontSize="lg" color="primary.main">Vocabulary</Text>
           </Link>

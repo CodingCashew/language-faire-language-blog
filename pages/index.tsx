@@ -23,7 +23,7 @@ export default function Home() {
             <Image
               borderRadius="5px"
               boxSize="65%"
-              src="/blogArticleThumbnail.avif"
+              src="/assets/pradamas-gifarry-889Qh5HJj4I-unsplash.jpg"
               alt="learning English"
             />
             <Text fontSize="3xl" textAlign={["left"]} marginLeft="1em">
@@ -53,19 +53,19 @@ export default function Home() {
               <Image
                 maxW="33%"
                 borderRadius="5px"
-                src="/blogArticleThumbnail.avif"
+                src="/assets/christin-hume-Hcfwew744z4-unsplash.jpg"
                 alt="learning English"
               />
               <Image
                 maxW="33%"
                 borderRadius="5px"
-                src="/blogArticleThumbnail.avif"
+                src="/assets/jan-kopriva-SCEywLgwj2E-landscape.jpg"
                 alt="learning English"
               />
               <Image
                 maxW="33%"
                 borderRadius="5px"
-                src="/blogArticleThumbnail.avif"
+                src= "/assets/soundtrap-C-2Wky-LT7k-unsplash.jpg"
                 alt="learning English"
               />
             </Container>
@@ -87,7 +87,7 @@ export default function Home() {
               borderRadius="5px"
               boxSize="70%"
               maxH="md"
-              src="/blogArticleThumbnail.avif"
+              src="/assets/emmanuel-ikwuegbu-81fRHbVliQI-unsplash.jpg"
               alt="learning English"
             />
           </Container>

@@ -1,10 +1,15 @@
+import { useRouter } from 'next/router'
 import {
   Container
 } from "@chakra-ui/react";
 
-function BlogArticle({ article }) {
+function BlogArticle() {
+  const router = useRouter()
+  const { id } = router.query
+  const article = getServerSideProps(id)
   return (
     <Container maxW="2xl" centerContent>
+      {id}
       {article}
       {/* <Text fontSize="xl">{article.title}</Text>
       <Container>
@@ -20,34 +25,21 @@ function BlogArticle({ article }) {
 
 export default BlogArticle;
 
-export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/blog')
-  const articles = await res.json()
-
-  const paths = articles.map((article) => ({
-    params: { id: article._id },
-  }));
-
-  return {
-    props: { articles, fallback: false },
-  };
-}
-
-export async function getStaticProps({ params }) {
-  // console.log('params: ', params.id)
-
-  console.log('params.id:', params.id)
-  let res = await fetch(`http://localhost:3000/blog/${params.id}`, {
-  // let res = await fetch(`http://localhost:3000/api/getArticle/${params.id}`, {
+export async function getServerSideProps(id) {
+  // console.log('id in [id]:', id)
+  let res = await fetch(`http://localhost:3000/api/getArticle/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
   });
-  let article = await res.json();
-  console.log('res:', res)
-  console.log('article: ', article)
+  let articles = await res.json();
+  // console.log('articles:', articles)
+  
+  // console.log("paths: ", paths);
+  // console.log('params in blog: ', params)
+
   return {
-    props: { article },
+    props: { articles },
   };
 }

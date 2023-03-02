@@ -1,14 +1,121 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import {
+  Box,
+  Button,
+  Container,
+  Text,
+  Image,
+  Link,
+} from "@chakra-ui/react";
+import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title className={styles.myClass} >LangBlog</title>
-        <meta name="description" content="Langship" />
-        <link rel="icon" href="../public/logo.png" />
-      </Head>
-    </div>
+    <div>
+        <Box w="100%" h="100%" bgGradient="linear(to-br, #4FD1C5, #9F7AEA)">
+          <Container
+            maxW="4xl"
+            minHeight="md"
+            color="white"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Image
+              borderRadius="5px"
+              boxSize="65%"
+              src="/blogArticleThumbnail.avif"
+              alt="learning English"
+            />
+            <Text fontSize="3xl" textAlign={["left"]} marginLeft="1em">
+              Follow your heart and speak English today!{" "}
+            </Text>
+          </Container>
+        </Box>
+        <Box w="100%" h="100%" bgColor="white">
+          <Container maxW="4xl" minHeight="sm" align="center" color="#4FD1C5">
+            <Text
+              fontSize="3xl"
+              maxW="2xl"
+              textAlign={["left", "center"]}
+              marginY="1em"
+            >
+              Explore new worlds and possibilities by learning English from the
+              convenience of your own home.
+            </Text>
+            <Container
+              maxW="4xl"
+              display="flex"
+              flexDirection="row"
+              flexWrap="wrap"
+              justifyContent="space-between"
+              marginBottom="1rem"
+            >
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+              <Image
+                maxW="33%"
+                borderRadius="5px"
+                src="/blogArticleThumbnail.avif"
+                alt="learning English"
+              />
+            </Container>
+          </Container>
+        </Box>
+        <Box w="100%" h="100%" bgColor="#D6BCFA">
+          <Container
+            maxW="3xl"
+            minHeight="lg"
+            color="white"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Text fontSize="3xl" textAlign={["right"]} marginRight="1.5em">
+              Follow Your Heart English helps you reach your goals!
+            </Text>
+            <Image
+              borderRadius="5px"
+              boxSize="70%"
+              maxH="md"
+              src="/blogArticleThumbnail.avif"
+              alt="learning English"
+            />
+          </Container>
+        </Box>
+        <Box w="100%" h="sm" bgGradient="linear(to-l, #38B2AC,#B794F4)">
+          <Container
+            maxW="3xl"
+            minHeight="sm"
+            color="white"
+            display="flex"
+            alignItems="center"
+          >
+            <Text fontSize="3xl" textAlign={["left", "center"]} paddingY="1rem">
+              Join Our Community of Passionate English Learners!
+            </Text>
+            <Button
+              bgColor="#D6BCFA"
+              color="white"
+              justifyContent="center"
+              paddingX="3em"
+              paddingY="1.35em"
+            >
+              <Link href="/signup">
+                <ArrowRightIcon marginRight=".5rem" /> Create a New Account
+              </Link>
+            </Button>
+          </Container>
+        </Box>
+      </div>
   )
 }

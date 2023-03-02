@@ -1,4 +1,12 @@
-import { Container, Text, Card, CardBody, Image, Link, Button } from "@chakra-ui/react";
+import {
+  Container,
+  Text,
+  Card,
+  CardBody,
+  Image,
+  Link,
+  Button,
+} from "@chakra-ui/react";
 
 function Vocab() {
   return (
@@ -6,9 +14,9 @@ function Vocab() {
       <Text fontSize="xl" m={3}>
         Vocab Practice
       </Text>
-      <Container >
+      <Container>
         <Card mt={2}>
-          <CardBody align="center">
+          <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
             <text>Family Vocabulary</text>
             <Link href="/vocab/prac1">
@@ -19,7 +27,7 @@ function Vocab() {
           </CardBody>
         </Card>
         <Card mt={2}>
-          <CardBody align="center">
+          <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
             <text>Cooking Vocabulary</text>
             <Link href="/vocab/prac1">

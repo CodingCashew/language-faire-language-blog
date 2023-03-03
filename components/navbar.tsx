@@ -1,6 +1,9 @@
 import React from "react";
 import { Box, Text, Image } from "@chakra-ui/react";
 import Link from "next/link";
+import { Search2Icon } from '@chakra-ui/icons'
+
+
 
 export default function Navbar() {
   return (
@@ -31,6 +34,7 @@ export default function Navbar() {
           <Link href="/blog" className="links">
             <Text fontSize="lg" color="primary.main">Blog</Text>
           </Link>
+          <Search2Icon className="search" boxSize={5} color="primary.main" />
         </div>
       </div>
     </Box>

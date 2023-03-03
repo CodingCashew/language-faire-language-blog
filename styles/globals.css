@@ -26,6 +26,11 @@
   padding: 1rem;
 }
 
+.search {
+  align-self: center;
+  margin: 1rem;
+}
+
 .mainLinksContainer {
   display: flex;
   flex-direction: row;

@@ -6,68 +6,101 @@ import {
   Image,
   Link,
   Text,
+  Flex,
 } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { ChevronLeftIcon, ChevronRightIcon, ViewIcon } from "@chakra-ui/icons";
 
 function VocabPrac() {
-  // const [playingAudio, setPlayingAudio] = useState(false);
+  const [cards, setCards] = useState([
+    { front: "almond", back: "almendra" },
+    { front: "walnut", back: "nuez" },
+  ]);
 
-  const tempVocab = [
-    {
-      id: 1,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "This is an example sentence using the vocabulary word.",
-    },
-    {
-      id: 2,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "Oh, wow. This is also an example sentence.",
-    },
-    {
-      id: 3,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "Whoopity Doo!",
-    },
-    {
-      id: 4,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "How now thou brown cow?",
-    },
-  ];
+  const [isShowingBack, setIsShowingBack] = useState(false);
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    getCards();
+  }, []);
+
+  const getCards = async () => {
+    setCards([
+      {
+        front: "We went swimming in the __________.",
+        back: "sea",
+        image: "/assets/sea.jpg",
+        alt: "photo showing a body of water",
+        audio: "/audio/sea.mp3",
+      },
+      {
+        front: "She watched the sun set behind the __________.",
+        back: "mountain",
+        image: "/assets/mountain.jpg",
+        alt: "photo showing an elevated part of land",
+        audio: "/audio/mountain.mp3",
+      },
+    ]);
+  };
+
+  const getPrevious = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+      setIsShowingBack(false);
+    }
+  };
+  const showBack = () => {
+    if (!isShowingBack) setIsShowingBack(true);
+  };
+  const getNext = () => {
+    if (index < cards.length - 1) {
+      setIndex(index + 1);
+      setIsShowingBack(false);
+    }
+  };
 
   return (
-    <Container maxW="2xl" centerContent>
-      <Text fontSize="xl">Listening Practice 1</Text>
-      <Container>
-        {tempVocab.map((practice) => (
-          <Card mt={3} key={practice.id}>
-            <CardBody>
-              <audio
-                controls
-                src={practice.path}
-                centerContent
-                sx={{ align: "center" }}
-              />
-              <Text mt={3}>{practice.text}</Text>
-            </CardBody>
-          </Card>
-        ))}
+    <Flex direction="column" align="center">
+      <Text fontSize="lg" mt={1} mb={1} color="primary.dark">
+        {index + 1}/{cards.length}
+      </Text>
+      <Container
+        mt={1}
+        mb={7}
+        minH="240px"
+        borderRadius={6}
+        centerContent
+        boxShadow="3px 3px 5px 1px #ccc"
+      >
+        <Text fontSize="2xl" mt={4} mb={4}>
+          {cards[index].front}
+        </Text>
+        <Image src={cards[index].image} alt={cards[index].alt} maxH="150px" />
+
+        {isShowingBack && (
+          <>
+            <Text fontSize="3xl" color="primary.dark" p={5}>
+              {cards[index].back}
+            </Text>
+            <audio controls src={cards[index].audio} />
+          </>
+        )}
       </Container>
-    </Container>
+      <Flex justify="center" gridGap={3}>
+        <Button onClick={getPrevious} bgColor="primary.main" color="white">
+          <ChevronLeftIcon mr={2} />
+          Previous
+        </Button>
+        <Button onClick={showBack} bgColor="secondary.main" color="white">
+          <ViewIcon mr={2} />
+          Show Back
+        </Button>
+        <Button onClick={getNext} bgColor="primary.main" color="white">
+          Next
+          <ChevronRightIcon ml={2} />
+        </Button>
+      </Flex>
+    </Flex>
   );
 }
 
 export default VocabPrac;
-
-// export async function getServerSideProps(context: any) {
-//   console.log("in getSSP");
-//   let res = await fetch("http://localhost:3000/api/articles", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   let articles = await res.json();
-//   return {
-//     props: { articles },
-//   };
-// }

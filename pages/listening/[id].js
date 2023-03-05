@@ -68,6 +68,7 @@ function Listening() {
   const [corrections, setCorrections] = useState({});
   const [showingCorrections, setShowingCorrections] = useState(false);
   const handleShowCorrections = () => {
+    const correctionsToSet = {}
     for (let questionGroup in questions) {
       let questionNumber = questions[questionGroup].id;
       let correctAnswer = questions[questionGroup].answer;
@@ -76,11 +77,16 @@ function Listening() {
         answers[questionNumber] !== correctAnswer
       ) {
         console.log("question wrong:", questionNumber);
+        console.log("user answer:", answers[questionNumber]);
+        console.log("correct answer:", correctAnswer);
+        correctionsToSet[questionNumber] = `The correct answer is: ${correctAnswer}`
       } else {
         console.log("Correct!");
+        correctionsToSet[questionNumber] = "Correct!"
       }
     }
-
+    console.log('correctionsToSet: ', correctionsToSet)
+    setCorrections(correctionsToSet);
     setShowingCorrections(true);
   };
 
@@ -90,10 +96,7 @@ function Listening() {
       <Container>
         <Card mt={3}>
           <CardBody>
-            <audio
-              controls
-              src="/audio/HeyAmandaHowAreThingsWithYou.mp3"
-            />
+            <audio controls src="/audio/HeyAmandaHowAreThingsWithYou.mp3" />
             <Button
               onClick={toggleShowOrHide}
               backgroundColor="secondary.dark"
@@ -105,7 +108,10 @@ function Listening() {
             {showScript === "Hide Script" && (
               <Text mt={3}>
                 This is a long transcription of the long audio clip that will
-                only be shown if the user selects show script. The button will reveal the words that are spoken in the audio so the user will be able to get clarification if they need it, but listening without the script first.
+                only be shown if the user selects show script. The button will
+                reveal the words that are spoken in the audio so the user will
+                be able to get clarification if they need it, but listening
+                without the script first.
               </Text>
             )}
             {questions.map((question) => (
@@ -128,6 +134,7 @@ function Listening() {
                       {option}
                     </Radio>
                   ))}
+                  {showingCorrections && <Text color="secondary.dark">{corrections[question.id]}</Text>}
                 </RadioGroup>
               </Container>
             ))}
@@ -146,17 +153,3 @@ function Listening() {
 }
 
 export default Listening;
-
-// export async function getServerSideProps(context: any) {
-//   console.log("in getSSP");
-//   let res = await fetch("http://localhost:3000/api/articles", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   let articles = await res.json();
-//   return {
-//     props: { articles },
-//   };
-// }

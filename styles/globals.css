@@ -4,6 +4,7 @@
   font-weight: bold;
 }
 
+
 /* Navbar Styling */
 .flexboxContainer {
   display: flex;
@@ -39,4 +40,11 @@
 
 .article {
   margin: '20px';
+}
+
+.footer {
+  height: 25px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }

@@ -27,13 +27,15 @@ export default function Navbar() {
           </Link> */}
           <Link href="/grammar" className="links">
             <Text fontSize="lg" color="primary.main">Grammar</Text>
-          </Link>
+          </Link> 
           <Link href="/vocab" className="links">
             <Text fontSize="lg" color="primary.main">Vocabulary</Text>
           </Link>
           <Link href="/blog" className="links">
             <Text fontSize="lg" color="primary.main">Blog</Text>
           </Link>
+          <Link href="/login" className="links"><Text fontSize='lg'>Log In</Text></Link>
+          <Link href="/signup" className="links"><Text fontSize='lg'>Sign Up</Text></Link>
           <Search2Icon className="search" boxSize={5} color="primary.main" />
         </div>
       </div>

@@ -59,16 +59,13 @@ function VocabPrac() {
   };
 
   return (
-    <Flex direction="column" align="center">
-      <Text fontSize="lg" mt={1} mb={1} color="primary.dark">
-        {index + 1}/{cards.length}
-      </Text>
+    <Flex direction="column" align="center" >
+      
       <Container
         mt={1}
-        mb={7}
-        minH="240px"
+        mb={3}
+        minH={400}
         borderRadius={6}
-        centerContent
         boxShadow="3px 3px 5px 1px #ccc"
       >
         <Text fontSize="2xl" mt={4} mb={4}>
@@ -85,6 +82,9 @@ function VocabPrac() {
           </>
         )}
       </Container>
+      <Text fontSize="lg" mb={1} color="primary.dark">
+        {index + 1}/{cards.length}
+      </Text>
       <Flex justify="center" gridGap={3}>
         <Button onClick={getPrevious} bgColor="primary.main" color="white">
           <ChevronLeftIcon mr={2} />
@@ -92,7 +92,7 @@ function VocabPrac() {
         </Button>
         <Button onClick={showBack} bgColor="secondary.main" color="white">
           <ViewIcon mr={2} />
-          Show Back
+          Show
         </Button>
         <Button onClick={getNext} bgColor="primary.main" color="white">
           Next

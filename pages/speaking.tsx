@@ -3,50 +3,41 @@ import {
   CardBody,
   Container,
   Text,
+  Image,
+  Link,
+  Button
 } from "@chakra-ui/react";
 
 function Speaking() {
-  // const [playingAudio, setPlayingAudio] = useState(false);
-
-  const tempVocab = [
-    {
-      id: 1,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "This is an example sentence using the vocabulary word.",
-    },
-    {
-      id: 2,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "Oh, wow. This is also an example sentence.",
-    },
-    {
-      id: 3,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "Whoopity Doo!",
-    },
-    {
-      id: 4,
-      path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-      text: "How now thou brown cow?",
-    },
-  ];
-
+  const speaking = [
+  {
+    id:'1',
+    title: 'Basic Chit-chat',
+    path: '/assets/speaking.jpg'
+  },
+  {
+    id:'2',
+    title: 'Talking About Vacations',
+    path: '/assets/speaking.jpg'
+  },
+]
   return (
-    <Container maxW="2xl" centerContent>
-      <Text fontSize="xl">Speaking Practice 1</Text>
+    <Container maxW="xl">
+      <Text fontSize='xl' m={3}>Speaking Practice</Text>
       <Container>
-        {tempVocab.map((practice) => (
-          <Card mt={3} key={practice.id}>
-            <CardBody>
-              <audio
-                controls
-                src={practice.path}
-                sx={{ align: "center" }}
-              />
-              <Text mt={3}>{practice.text}</Text>
-            </CardBody>
-          </Card>
-        ))}
+      {speaking.map(prac => (
+        <Card mt={2} key={prac.id}>
+          <CardBody>
+            <Image src={prac.path} alt="language blog logo" w="75%" />
+            <Text>{prac.title}</Text>
+            <Link href={`/speaking/${prac.id}`}>
+              <Button bgColor="primary.main" m="1rem" color="white">
+                Go To Speaking Practice >
+              </Button>
+            </Link>
+          </CardBody>
+        </Card>
+      ))}
       </Container>
     </Container>
   );

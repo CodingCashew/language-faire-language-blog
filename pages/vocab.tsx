@@ -10,7 +10,7 @@ import {
 
 function Vocab() {
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="xl">
       <Text fontSize="xl" m={3}>
         Vocab Practice
       </Text>
@@ -18,7 +18,7 @@ function Vocab() {
         <Card mt={2}>
           <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
-            <text>Family Vocabulary</text>
+            <Text>Family Vocabulary</Text>
             <Link href="/vocab/vocab1">
               <Button bgColor="primary.main" m="1rem" color="white">
                 Learn Vocab
@@ -29,7 +29,7 @@ function Vocab() {
         <Card mt={2}>
           <CardBody>
             <Image src="/vocabThumbnail.jpg" alt="language blog logo" w="75%" />
-            <text>Cooking Vocabulary</text>
+            <Text>Cooking Vocabulary</Text>
             <Link href="/vocab/vocab2">
               <Button bgColor="primary.main" m="1rem" color="white">
                 Learn Vocab

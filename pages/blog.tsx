@@ -4,8 +4,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import {
   Container,
-  Flex,
-  Input,
+  Text,
   Button,
   Card,
   CardBody,
@@ -21,7 +20,6 @@ export interface Article {
 }
 
 export default function Blog({ articles }: any) {
-
   return (
     <Container maxW="xl">
       {"My Lovely Articles:"}
@@ -34,7 +32,7 @@ export default function Blog({ articles }: any) {
               alt="language blog logo"
               w="75%"
             />
-            <text>{article.title}</text>
+            <Text>{article.title}</Text>
             <Link href={`/blog/${article._id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
                 Read Article
@@ -56,7 +54,7 @@ export async function getServerSideProps(context: any) {
   });
   let articles = await res.json();
   // console.log('articles: ', articles)
-  
+
   // console.log("paths: ", paths);
   // console.log('params in blog: ', params)
 

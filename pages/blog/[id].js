@@ -8,9 +8,10 @@ function BlogArticle() {
   const { id } = router.query
   const article = getServerSideProps(id)
   return (
-    <Container maxW="2xl" centerContent>
+    <Container maxW="2xl">
       {id}
       {article}
+      {articles}
       {/* <Text fontSize="xl">{article.title}</Text>
       <Container>
           <Card mt={3} key={article.id}>

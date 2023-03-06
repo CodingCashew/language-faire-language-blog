@@ -17,9 +17,10 @@ export interface Article {
   _id: number;
   title: string;
   article_content: string;
+  id: string;
 }
 
-export default function Blog({ articles }: any) {
+export default function Articles({ articles }: any) {
   return (
     <Container maxW="xl">
       {"My Lovely Articles:"}
@@ -33,7 +34,7 @@ export default function Blog({ articles }: any) {
               w="75%"
             />
             <Text>{article.title}</Text>
-            <Link href={`/blog/${article._id}`}>
+            <Link href={`/articles/${article.id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
                 Read Article
               </Button>
@@ -53,10 +54,6 @@ export async function getServerSideProps(context: any) {
     },
   });
   let articles = await res.json();
-  // console.log('articles: ', articles)
-
-  // console.log("paths: ", paths);
-  // console.log('params in blog: ', params)
 
   return {
     props: { articles },

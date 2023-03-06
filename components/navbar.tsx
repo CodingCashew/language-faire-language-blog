@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link href="/vocab" className="links">
             <Text fontSize="lg" color="primary.main">Vocabulary</Text>
           </Link>
-          <Link href="/blog" className="links">
+          <Link href="/articles" className="links">
             <Text fontSize="lg" color="primary.main">Blog</Text>
           </Link>
           <Link href="/login" className="links"><Text fontSize='lg'>Log In</Text></Link>

@@ -8,19 +8,21 @@ import {
   Button
 } from "@chakra-ui/react";
 
-function Speaking() {
-  const speaking = [
-  {
-    id:'1',
-    title: 'Basic Chit-chat',
-    path: '/assets/speaking.jpg'
-  },
-  {
-    id:'2',
-    title: 'Talking About Vacations',
-    path: '/assets/speaking.jpg'
-  },
-]
+export async function getServerSideProps(context: any) {
+  let res = await fetch("http://localhost:3000/api/speaking", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  let speaking = await res.json();
+  console.log('speaking in main page: ', speaking)
+  return {
+    props: { speaking },
+  };
+}
+
+function Speaking({ speaking }:any) {
   return (
     <Container maxW="xl">
       <Text fontSize='xl' m={3}>Speaking Practice</Text>
@@ -28,7 +30,7 @@ function Speaking() {
       {speaking.map(prac => (
         <Card mt={2} key={prac.id}>
           <CardBody>
-            <Image src={prac.path} alt="language blog logo" w="75%" />
+            <Image src={prac.imgPath} alt="language blog logo" w="75%" />
             <Text>{prac.title}</Text>
             <Link href={`/speaking/${prac.id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
@@ -44,17 +46,3 @@ function Speaking() {
 }
 
 export default Speaking;
-
-// export async function getServerSideProps(context: any) {
-//   console.log("in getSSP");
-//   let res = await fetch("http://localhost:3000/api/speaking", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   let articles = await res.json();
-//   return {
-//     props: { articles },
-//   };
-// }

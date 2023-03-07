@@ -16,7 +16,7 @@ export async function getServerSideProps(context: any) {
     },
   });
   let listening = await res.json();
-  console.log('listening in main page: ', listening)
+
   return {
     props: { listening },
   };

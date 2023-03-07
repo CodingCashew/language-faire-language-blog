@@ -1,15 +1,34 @@
 import { Button, Container, Input, Text, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 
-const answers = {
-  one: "have",
-  two: "been",
-  three: "Have",
-  four: "you",
-  five: "seen",
-};
+// const answers = {
+//   one: "have",
+//   two: "been",
+//   three: "Have",
+//   four: "you",
+//   five: "seen",
+// };
 
-function GrammarExercise() {
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch("http://localhost:3000/api/grammar/", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+
+//   const data = await res.json();
+//   let grammar = data.filter((grammar) => grammar.id == context.query.id);
+
+//   grammar = grammar[0];
+
+//   return {
+//     props: { grammar },
+//   };
+// };
+
+function GrammarExercise({ grammar }) {
+// function GrammarExercise({ grammar }) {
   const [revealAnswers, setRevealingAnswers] = useState(false);
   const [values, setValues] = useState({
     one: "",

@@ -8,45 +8,30 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const speaking = [
-  {
-    id: 1,
-    path: "/audio/HeyAmandaHowAreThingsWithYou.mp3",
-    text: "Hey, Amanda. How're things with you?",
-  },
-  {
-    id: 2,
-    path: "/audio/HowsYourJobSearchGoing.mp3",
-    text: "How's your job search going?",
-  },
-  {
-    id: 3,
-    path: "/audio/DoYouHaveAnyPlansThisWeekend.mp3",
-    text: "Do you have any plans this weekend?",
-  },
-  {
-    id: 4,
-    path: "/audio/WhatAreYouDoingThisWeekend.mp3",
-    text: "What are you doing this weekend?",
-  },
-  {
-    id: 5,
-    path: "/audio/DoYouWannaGrabSomethingToEat.mp3",
-    text: "Do you wanna grab something to eat?",
-  },
-  {
-    id: 6,
-    path: "/audio/WannaGoToTheMoviesWithMe.mp3",
-    text: "Wanna go to the movies with me?",
-  },
+export const getServerSideProps = async (context) => {
+  const res = await fetch("http://localhost:3000/api/speaking/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-];
-function Speaking() {
+  const data = await res.json();
+  let speaking = data.filter((speaking) => speaking.id == context.query.id);
+
+  speaking = speaking[0];
+
+  return {
+    props: { speaking },
+  };
+};
+
+function Speaking({ speaking }) {
   return (
     <Container maxW="2xl">
-      <Text fontSize="xl">Speaking Practice 1</Text>
+      <Text fontSize="xl">{speaking.title}</Text>
       <Container >
-      {speaking.map(prac => (
+      {speaking.phrases.map(prac => (
         <Card mt={3} key={prac.id}>
           <CardBody>
             <audio

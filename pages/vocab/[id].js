@@ -11,7 +11,25 @@ import {
 import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon, ViewIcon } from "@chakra-ui/icons";
 
-function VocabPrac() {
+export const getServerSideProps = async (context) => {
+  const res = await fetch("http://localhost:3000/api/speaking/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  let vocab = data.filter((vocab) => vocab.id == context.query.id);
+
+  vocab = vocab[0];
+
+  return {
+    props: { vocab },
+  };
+};
+
+function VocabPrac({ vocab }) {
   const [cards, setCards] = useState([
     { front: "almond", back: "almendra" },
     { front: "walnut", back: "nuez" },

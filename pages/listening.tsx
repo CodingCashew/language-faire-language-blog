@@ -8,35 +8,38 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-function Listening() {
-  const listening = [
-    {
-      id: "1",
-      title: "Fanny Goes to College",
-      path: '/assets/listening.jpg'
+export async function getServerSideProps(context: any) {
+  let res = await fetch("http://localhost:3000/api/listening", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
     },
-    {
-      id: "2",
-      title: "Ted Goes to the Doctor",
-      path: '/assets/listening.jpg'
-    },
-  ];
+  });
+  let listening = await res.json();
+  console.log('listening in main page: ', listening)
+  return {
+    props: { listening },
+  };
+}
+
+
+function Listening({ listening }:any) {
   return (
     <Container maxW="xl">
       <Text fontSize="xl" m={3}>
         Listening Practice
       </Text>
       <Container>
-      {listening.map(prac => (
-        <Card mt={2} key={prac.id}>
+      {listening.map((practice: any) => (
+        <Card mt={2} key={practice.id}>
           <CardBody>
             <Image
-              src={prac.path}
+              src={practice.imgPath}
               alt="language blog logo"
               w="75%"
             />
-            <Text>Listening Practice 1</Text>
-            <Link href={`/listening/${prac.id}`}>
+            <Text>{practice.title}</Text>
+            <Link href={`/listening/${practice.id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
                 Listen
               </Button>
@@ -50,3 +53,5 @@ function Listening() {
 }
 
 export default Listening;
+
+

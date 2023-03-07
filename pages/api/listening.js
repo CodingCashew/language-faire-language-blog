@@ -5,9 +5,9 @@ const handler = async (req, res) => {
     const client = await clientPromise;
     const db = client.db("Langship");
 
-    const articles = await db.collection("LIstening").find({}).toArray();
+    const listening = await db.collection("Listening").find({}).toArray();
 
-    res.json(articles);
+    res.json(listening);
   } catch (e) {
     console.error(e);
   }

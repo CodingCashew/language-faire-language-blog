@@ -9,7 +9,25 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-function Listening() {
+export const getServerSideProps = async (context) => {
+  const res = await fetch("http://localhost:3000/api/listening/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  let listening = data.filter((listening) => listening.id == context.query.id);
+
+  listening = listening[0];
+
+  return {
+    props: { listening },
+  };
+};
+
+function Listening({ listening }) {
   const [showScript, setShowOrHide] = useState("Show Script");
 
   const toggleShowOrHide = () => {
@@ -17,42 +35,6 @@ function Listening() {
       ? setShowOrHide("Hide Script")
       : setShowOrHide("Show Script");
   };
-
-  const questions = [
-    {
-      id: 1,
-      question: "Where did Fanny go?",
-      options: [
-        "a. To the store",
-        "b. To her dorm room",
-        "c. To the bakery",
-        "d. To the bank",
-      ],
-      answer: "b",
-    },
-    {
-      id: 2,
-      question: "What did she find in her dorm room?",
-      options: [
-        "a. a snake",
-        "b. a stack of books",
-        "c. a group of students",
-        "d. a cake",
-      ],
-      answer: "a",
-    },
-    {
-      id: 3,
-      question: "Who helped Fanny?",
-      options: [
-        "a. the cashier",
-        "b. her mother",
-        "c. her professor",
-        "d. her roommate",
-      ],
-      answer: "d",
-    },
-  ];
 
   const [answers, setAnswers] = useState({});
   const handleUpdateAnswers = (e) => {
@@ -69,34 +51,29 @@ function Listening() {
   const [showingCorrections, setShowingCorrections] = useState(false);
   const handleShowCorrections = () => {
     const correctionsToSet = {}
-    for (let questionGroup in questions) {
-      let questionNumber = questions[questionGroup].id;
-      let correctAnswer = questions[questionGroup].answer;
+    for (let questionGroup in listening.questions) {
+      let questionNumber = listening.questions[questionGroup].id;
+      let correctAnswer = listening.questions[questionGroup].answer;
       if (
         !answers[questionNumber] ||
         answers[questionNumber] !== correctAnswer
       ) {
-        console.log("question wrong:", questionNumber);
-        console.log("user answer:", answers[questionNumber]);
-        console.log("correct answer:", correctAnswer);
         correctionsToSet[questionNumber] = `The correct answer is: ${correctAnswer}`
       } else {
-        console.log("Correct!");
         correctionsToSet[questionNumber] = "Correct!"
       }
     }
-    console.log('correctionsToSet: ', correctionsToSet)
     setCorrections(correctionsToSet);
     setShowingCorrections(true);
   };
 
   return (
     <Container maxW="2xl">
-      <Text fontSize="xl">Listening Practice 1</Text>
+      <Text fontSize="xl">{listening.title}</Text>
       <Container>
         <Card mt={3}>
           <CardBody>
-            <audio controls src="/audio/HeyAmandaHowAreThingsWithYou.mp3" />
+            <audio controls src={listening.audioPath} />
             <Button
               onClick={toggleShowOrHide}
               backgroundColor="secondary.dark"
@@ -106,15 +83,9 @@ function Listening() {
               {showScript}
             </Button>
             {showScript === "Hide Script" && (
-              <Text mt={3}>
-                This is a long transcription of the long audio clip that will
-                only be shown if the user selects show script. The button will
-                reveal the words that are spoken in the audio so the user will
-                be able to get clarification if they need it, but listening
-                without the script first.
-              </Text>
+              <Text mt={3}>{listening.script}</Text>
             )}
-            {questions.map((question) => (
+            {listening.questions.map((question) => (
               <Container key={question.id} m={3}>
                 <Text>
                   {question.id}. {question.question}

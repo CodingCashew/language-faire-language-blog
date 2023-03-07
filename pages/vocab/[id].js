@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon, ViewIcon } from "@chakra-ui/icons";
 
 export const getServerSideProps = async (context) => {
-  const res = await fetch("http://localhost:3000/api/speaking/", {
+  const res = await fetch("http://localhost:3000/api/vocab/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -23,16 +23,17 @@ export const getServerSideProps = async (context) => {
   let vocab = data.filter((vocab) => vocab.id == context.query.id);
 
   vocab = vocab[0];
+  console.log('vocab in getSSProps: ', vocab)
 
   return {
     props: { vocab },
   };
 };
 
+
 function VocabPrac({ vocab }) {
   const [cards, setCards] = useState([
-    { front: "almond", back: "almendra" },
-    { front: "walnut", back: "nuez" },
+    { front: "", back: "" }
   ]);
 
   const [isShowingBack, setIsShowingBack] = useState(false);
@@ -42,22 +43,7 @@ function VocabPrac({ vocab }) {
   }, []);
 
   const getCards = async () => {
-    setCards([
-      {
-        front: "We went swimming in the __________.",
-        back: "sea",
-        image: "/assets/sea.jpg",
-        alt: "photo showing a body of water",
-        audio: "/audio/sea.mp3",
-      },
-      {
-        front: "She watched the sun set behind the __________.",
-        back: "mountain",
-        image: "/assets/mountain.jpg",
-        alt: "photo showing an elevated part of land",
-        audio: "/audio/mountain.mp3",
-      },
-    ]);
+    setCards(vocab.cards);
   };
 
   const getPrevious = () => {
@@ -89,14 +75,14 @@ function VocabPrac({ vocab }) {
         <Text fontSize="2xl" mt={4} mb={4}>
           {cards[index].front}
         </Text>
-        <Image src={cards[index].image} alt={cards[index].alt} maxH="150px" />
+        <Image src={cards[index].vocabImg} alt={cards[index].alt} maxH="150px" />
 
         {isShowingBack && (
           <>
             <Text fontSize="3xl" color="primary.dark" p={5}>
               {cards[index].back}
             </Text>
-            <audio controls src={cards[index].audio} />
+            <audio controls src={cards[index].audioPath} />
           </>
         )}
       </Container>

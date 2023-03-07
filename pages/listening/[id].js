@@ -6,6 +6,7 @@ import {
   Text,
   RadioGroup,
   Radio,
+  Link
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -67,6 +68,22 @@ function Listening({ listening }) {
     setShowingCorrections(true);
   };
 
+  const previousExercise = () => {
+    // if (index > 0) {
+    //   setIndex(index - 1);
+    //   setIsShowingBack(false);
+    // }
+    console.log('listening.id', listening.id)
+  };
+
+  const nextExercise = () => {
+    // if (index < cards.length - 1) {
+    //   setIndex(index + 1);
+    //   setIsShowingBack(false);
+    // }
+    console.log('listening.id', listening.id)
+  };
+
   return (
     <Container maxW="2xl">
       <Text fontSize="xl">{listening.title}</Text>
@@ -118,6 +135,8 @@ function Listening({ listening }) {
             </Button>
           </CardBody>
         </Card>
+        <Button onClick={previousExercise} backgroundColor="secondary.dark" color="white"><Link href={`/listening/${Number(listening.id) - 1}`}>Previous</Link></Button>
+        <Button onClick={nextExercise} backgroundColor="primary.dark" color="white"><Link href={`/listening/${Number(listening.id) + 1}`}>Next</Link></Button>
       </Container>
     </Container>
   );

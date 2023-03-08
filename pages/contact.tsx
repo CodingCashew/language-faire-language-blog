@@ -55,12 +55,12 @@ function Contact() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" centerContent>
       <form onSubmit={sendEmail}>
-        <Grid mt="2rem">
-            <Text fontSize="xl" color="secondary.dark" >Questions or Comments?</Text>
-            <Text fontSize="2xl" color="primary.main">Drop us a Message</Text>
-          <GridItem >
+        <Grid mt={10} >
+            <Text fontSize="xl" color="secondary.dark" >Questions? Comments? Suggestions?</Text>
+            <Text fontSize="2xl" color="primary.main">Drop us a Message ~</Text>
+          <GridItem mt={3} minW="lg">
             <Input
               id="outlined-name"
               placeholder="Name"
@@ -71,7 +71,7 @@ function Contact() {
               required
             />
           </GridItem>
-          <GridItem >
+          <GridItem mt={3}>
             <Input
               type="email"
               id="outlined-email"
@@ -84,14 +84,13 @@ function Contact() {
               required
             />
           </GridItem>
-          <GridItem >
+          <GridItem mt={3}>
             <Textarea
               id="outlined-message"
               placeholder="Message"
               name="message"
               value={values.message}
-              style={{ marginTop: 10 }}
-              size='sm'
+              size='md'
               rows={5}
               color="primary"
               onChange={handleChange}
@@ -99,7 +98,7 @@ function Contact() {
             />
           </GridItem>
           <GridItem>
-            <Button variant="contained" type="submit" sx={{ marginTop: 2, backgroundColor:"secondary.extradark" }} >Submit Message <ArrowRightIcon /></Button>
+            <Button variant="contained" type="submit" bgColor="primary.dark" color="white" mt={3}>Submit Message <ArrowRightIcon /></Button>
           </GridItem>
         </Grid>
       </form>

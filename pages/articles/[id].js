@@ -26,13 +26,14 @@ export const getServerSideProps = async (context) => {
 
 export default function Article({ article }) {
   return (
-    <Container maxW="2xl">
+    <Container maxW="2xl" minH="sm">
       <Card key={article.id}>
         <CardHeader>
-          <Heading size="md">{article.title}</Heading>
+          <Heading size="lg">{article.title}</Heading>
+          <Text fontSize="md">{new Date(article.date_written).toDateString()}</Text>
         </CardHeader>
         <CardBody>
-          <Text>{article.article_content}</Text>
+          <Text fontSize="lg">{article.article_content}</Text>
         </CardBody>
       </Card>
     </Container>

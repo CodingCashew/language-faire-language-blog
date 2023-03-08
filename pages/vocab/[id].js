@@ -23,7 +23,6 @@ export const getServerSideProps = async (context) => {
   let vocab = data.filter((vocab) => vocab.id == context.query.id);
 
   vocab = vocab[0];
-  console.log('vocab in getSSProps: ', vocab)
 
   return {
     props: { vocab },

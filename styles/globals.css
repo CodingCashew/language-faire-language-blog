@@ -43,8 +43,20 @@
 }
 
 .footer {
-  height: 25px;
-  position: absolute;
+  position: relative;
+  min-height: 20vh;
+  margin-top: 5rem;
+  padding-top: 3rem;
   left: 0;
   right: 0;
+}
+.footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: .5rem 1rem .5rem 1rem;
+}
+.footerText:hover {
+  color: "primary.dark";
+  text-decoration: none;
 }

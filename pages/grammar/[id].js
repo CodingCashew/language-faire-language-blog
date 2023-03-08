@@ -28,7 +28,6 @@ import { useState } from "react";
 // };
 
 function GrammarExercise({ grammar }) {
-// function GrammarExercise({ grammar }) {
   const [revealAnswers, setRevealingAnswers] = useState(false);
   const [values, setValues] = useState({
     one: "",
@@ -51,10 +50,10 @@ function GrammarExercise({ grammar }) {
     setRevealingAnswers(true)
 
     for (let questionNumber in values) {
-      if (values[questionNumber].toLowerCase().trim() !== answers[questionNumber].toLowerCase()) {
+      if (values[questionNumber].toLowerCase().trim() !== grammar.answers[questionNumber].toLowerCase()) {
         setCorrections((corrections) => ({
           ...corrections,
-          [questionNumber]: answers[questionNumber],
+          [questionNumber]: grammar.answers[questionNumber],
         }));
       }
     }
@@ -73,7 +72,7 @@ function GrammarExercise({ grammar }) {
   }
 
   return (
-    <Container maxW="2xl">
+    <Container maxW="2xl" minH="md">
       <Text fontSize="xl" align="center">
         Hardcoded Grammar Exercise
       </Text>

@@ -17,25 +17,25 @@ export default function Navbar() {
         </Link>
         <div className="mainLinksContainer">
           <Link href="/listening" className="links">
-            <Text fontSize="lg" color="primary.main">Listening</Text>
+            <Text fontSize="xl" color="primary.main">Listening</Text>
           </Link>
           <Link href="/speaking" className="links">
-            <Text fontSize="lg" color="primary.main">Speaking</Text>
+            <Text fontSize="xl" color="primary.main">Speaking</Text>
           </Link>
           {/* <Link href="/writing" className="links">
-            <Text fontSize="lg" color="primary.main">Writing</Text>
+            <Text fontSize="xl" color="primary.main">Writing</Text>
           </Link> */}
           <Link href="/grammar" className="links">
-            <Text fontSize="lg" color="primary.main">Grammar</Text>
+            <Text fontSize="xl" color="primary.main">Grammar</Text>
           </Link> 
           <Link href="/vocab" className="links">
-            <Text fontSize="lg" color="primary.main">Vocabulary</Text>
+            <Text fontSize="xl" color="primary.main">Vocabulary</Text>
           </Link>
           <Link href="/articles" className="links">
-            <Text fontSize="lg" color="primary.main">Blog</Text>
+            <Text fontSize="xl" color="primary.main">Blog</Text>
           </Link>
-          <Link href="/login" className="links"><Text fontSize='lg'>Log In</Text></Link>
-          <Link href="/signup" className="links"><Text fontSize='lg'>Sign Up</Text></Link>
+          <Link href="/login" className="links"><Text fontSize='xl'>Log In</Text></Link>
+          <Link href="/signup" className="links"><Text fontSize='xl'>Sign Up</Text></Link>
           <Search2Icon className="search" boxSize={5} color="primary.main" />
         </div>
       </div>

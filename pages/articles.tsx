@@ -1,7 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
-import clientPromise from "../lib/mongodb";
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import { ChevronRightIcon } from '@chakra-ui/icons'
 import {
   Container,
   Text,
@@ -22,8 +19,8 @@ export interface Article {
 
 export default function Articles({ articles }: any) {
   return (
-    <Container maxW="xl">
-      {"My Lovely Articles:"}
+    <Container maxW="xl" centerContent>
+      <Text fontSize="2xl" color="primary.dark">{"My Lovely Articles:"}</Text>
 
       {articles.map((article: Article) => (
         <Card mt={2} key={article._id}>
@@ -33,10 +30,11 @@ export default function Articles({ articles }: any) {
               alt="language blog logo"
               w="75%"
             />
-            <Text>{article.title}</Text>
+            <Text fontSize="xl">{article.title}</Text>
+            <Text fontSize="md">{article.article_content.slice(0, 100)}...</Text>
             <Link href={`/articles/${article.id}`}>
-              <Button bgColor="primary.main" m="1rem" color="white">
-                Read Article
+              <Button bgColor="secondary.dark" m="1rem" color="white">
+                Read Article<ChevronRightIcon />
               </Button>
             </Link>
           </CardBody>

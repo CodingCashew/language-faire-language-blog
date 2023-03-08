@@ -14,13 +14,13 @@ import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
 
 export default function Navbar() {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1224px)",
-  });
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+  // const isDesktopOrLaptop = useMediaQuery({
+  //   query: "(min-width: 1224px)",
+  // });
+  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
   return (
     <Box bg="gray.50" minH={20}>
       <div className="flexboxContainer">
@@ -32,7 +32,7 @@ export default function Navbar() {
             Follow Your Heart English
           </Text>
         </Link>
-        {isTabletOrMobile && (
+        {/* {isTabletOrMobile && (
           <Menu>
             <MenuButton
               as={IconButton}
@@ -63,8 +63,8 @@ export default function Navbar() {
               </MenuItem>
             </MenuList>
           </Menu>
-        )}
-        {isDesktopOrLaptop && (
+        )} */}
+        {/* {isDesktopOrLaptop && ( */}
           <div className="mainLinksContainer">
             <Link href="/listening" className="links">
               <Text fontSize="xl" color="primary.main">
@@ -104,7 +104,7 @@ export default function Navbar() {
             </Link>
             <Search2Icon className="search" boxSize={5} color="primary.main" />
           </div>
-        )}
+        {/* )} */}
       </div>
     </Box>
   );

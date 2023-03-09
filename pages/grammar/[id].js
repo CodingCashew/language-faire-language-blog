@@ -1,5 +1,6 @@
 import { Button, Container, Input, Text, Flex } from "@chakra-ui/react";
 import { useState } from "react";
+import NavButtons from "../../components/navButtons"
 
 // const answers = {
 //   one: "have",
@@ -18,16 +19,19 @@ import { useState } from "react";
 //   });
 
 //   const data = await res.json();
+// const numOfExercises = data.length
+
 //   let grammar = data.filter((grammar) => grammar.id == context.query.id);
 
 //   grammar = grammar[0];
 
 //   return {
-//     props: { grammar },
+//     props: { grammar, numOfExercises },
 //   };
 // };
 
-function GrammarExercise({ grammar }) {
+function GrammarExercise({ grammar, numOfExercises }) {
+  const section = "grammar";
   const [revealAnswers, setRevealingAnswers] = useState(false);
   const [values, setValues] = useState({
     one: "",
@@ -119,6 +123,7 @@ function GrammarExercise({ grammar }) {
         <Button onClick={checkAnswers}>Check Answers</Button>
         <Button onClick={clearAnswers}>Reset Answers</Button>
       </Container>
+      <NavButtons numOfExercises={numOfExercises} section={section} />
     </Container>
   );
 }

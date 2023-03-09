@@ -20,17 +20,18 @@ export const getServerSideProps = async (context) => {
   });
 
   const data = await res.json();
+  const numOfExercises = data.length;
   let vocab = data.filter((vocab) => vocab.id == context.query.id);
 
   vocab = vocab[0];
 
   return {
-    props: { vocab },
+    props: { vocab, numOfExercises },
   };
 };
 
 
-function VocabPrac({ vocab }) {
+function VocabPrac({ vocab, numOfExercises }) {
   const [cards, setCards] = useState([
     { front: "", back: "" }
   ]);

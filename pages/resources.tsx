@@ -11,7 +11,6 @@ import {
   Heading,
   CardBody,
   CardFooter,
-  Divider,
   ButtonGroup,
   Button,
 } from "@chakra-ui/react";
@@ -56,7 +55,7 @@ function Resources() {
                   </ButtonGroup>
                 </CardFooter>
               </Card>
-              
+
               <Card maxW="xs" m={5}>
                 <CardBody>
                   <Image

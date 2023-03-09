@@ -1,12 +1,10 @@
 import {
-  Button,
   Card,
   CardBody,
   Container,
-  Image,
-  Link,
   Text,
 } from "@chakra-ui/react";
+import NavButtons from "../../components/navButtons"
 
 export const getServerSideProps = async (context) => {
   const res = await fetch("http://localhost:3000/api/speaking/", {
@@ -17,16 +15,19 @@ export const getServerSideProps = async (context) => {
   });
 
   const data = await res.json();
+  const numOfExercises = data.length
+
   let speaking = data.filter((speaking) => speaking.id == context.query.id);
 
   speaking = speaking[0];
 
   return {
-    props: { speaking },
+    props: { speaking, numOfExercises },
   };
 };
 
-function Speaking({ speaking }) {
+function Speaking({ speaking, numOfExercises }) {
+  const section = "speaking";
   return (
     <Container maxW="2xl">
       <Text fontSize="xl">{speaking.title}</Text>
@@ -45,23 +46,10 @@ function Speaking({ speaking }) {
           </CardBody>
         </Card>
       ))}
+      <NavButtons numOfExercises={numOfExercises} section={section} />
       </Container>
     </Container>
   );
 }
 
 export default Speaking;
-
-// export async function getServerSideProps(context: any) {
-//   console.log("in getSSP");
-//   let res = await fetch("http://localhost:3000/api/articles", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   let articles = await res.json();
-//   return {
-//     props: { articles },
-//   };
-// }

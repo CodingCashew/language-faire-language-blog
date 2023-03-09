@@ -16,7 +16,7 @@ export async function getServerSideProps(context: any) {
     },
   });
   let speaking = await res.json();
-  console.log('speaking in main page: ', speaking)
+
   return {
     props: { speaking },
   };
@@ -27,7 +27,7 @@ function Speaking({ speaking }:any) {
     <Container maxW="xl">
       <Text fontSize='xl' m={3}>Speaking Practice</Text>
       <Container>
-      {speaking.map(prac => (
+      {speaking.map((prac:any) => (
         <Card mt={2} key={prac.id}>
           <CardBody>
             <Image src={prac.imgPath} alt="language blog logo" w="75%" />

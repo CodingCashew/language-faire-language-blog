@@ -14,14 +14,17 @@ import {
   ButtonGroup,
   Button,
 } from "@chakra-ui/react";
+import Sidebar from "../components/sidebar"
 
 function Resources() {
+  const listOfLinks = [{label: "General Resources", value: 'general'}, {label: "Cheat Sheets", value: 'pdf'}, {label: "English Games", value: 'games'}, {label: "Learn with Music", value: 'music'}, {label: "YouTube Videos", value: 'youtube'}, {label: "Podcast", value: 'podcast'}]
   return (
-    <Container maxW="7xl" minH="sm">
+    <Container maxW="7xl" minH="sm" >
       <Box>
-        <Text>Resources</Text>
+        <Text align="center" fontSize="2xl">Best Resources Ever</Text>
         <Flex>
-          <Box minW="3xs" minH="sm" border="yellow.500" borderWidth="3px" />
+          <Sidebar items={listOfLinks} />
+          {/* <Box minW="3xs" minH="sm" border="yellow.500" borderWidth="3px" /> */}
           <Spacer />
           <Box minW="3xl" minH="sm" border="purple.500" borderWidth="3px">
             <Flex flexWrap="wrap" >

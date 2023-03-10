@@ -40,7 +40,7 @@ function VocabPrac({ vocab, numOfExercises }) {
   const [index, setIndex] = useState(0);
   useEffect(() => {
     getCards();
-  }, []);
+  });
 
   const getCards = async () => {
     setCards(vocab.cards);
@@ -64,7 +64,7 @@ function VocabPrac({ vocab, numOfExercises }) {
 
   return (
     <Flex direction="column" align="center" >
-      
+
       <Container
         mt={1}
         mb={3}
@@ -90,18 +90,18 @@ function VocabPrac({ vocab, numOfExercises }) {
         {index + 1}/{cards.length}
       </Text>
       <Flex justify="center" gridGap={3}>
-        <Button onClick={getPrevious} bgColor="primary.main" color="white">
+        {index > 0 && <Button onClick={getPrevious} bgColor="primary.main" color="white">
           <ChevronLeftIcon mr={2} />
           Previous
-        </Button>
+        </Button>}
         <Button onClick={showBack} bgColor="secondary.main" color="white">
           <ViewIcon mr={2} />
           Show
         </Button>
-        <Button onClick={getNext} bgColor="primary.main" color="white">
+        {index < cards.length - 1 && <Button onClick={getNext} bgColor="primary.main" color="white">
           Next
           <ChevronRightIcon ml={2} />
-        </Button>
+        </Button>}
       </Flex>
     </Flex>
   );

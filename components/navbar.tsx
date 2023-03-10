@@ -28,7 +28,7 @@ export default function Navbar() {
           <Image src="../logo1.png" alt="language blog logo" w="50px" />
         </Link>
         <Link href="/" className="logo">
-          <Text fontSize="2xl" color="secondary.dark">
+          <Text fontSize="2xl" color="primary.main">
             Follow Your Heart English
           </Text>
         </Link>
@@ -67,28 +67,28 @@ export default function Navbar() {
         {/* {isDesktopOrLaptop && ( */}
         <div className="mainLinksContainer">
           <Link href="/listening" className="links">
-            <Text fontSize="xl" color="primary.main">
+            <Text fontSize="xl" color="secondary.dark">
               Listening
             </Text>
           </Link>
           <Link href="/speaking" className="links">
-            <Text fontSize="xl" color="primary.main">
+            <Text fontSize="xl" color="secondary.dark">
               Speaking
             </Text>
           </Link>
           <Link href="/grammar" className="links">
-            <Text fontSize="xl" color="primary.main">
+            <Text fontSize="xl" color="secondary.dark">
               Grammar
             </Text>
           </Link>
           <Link href="/vocab" className="links">
-            <Text fontSize="xl" color="primary.main">
+            <Text fontSize="xl" color="secondary.dark">
               Vocabulary
             </Text>
           </Link>
           <Menu isLazy>
             <MenuButton className="links">
-              <Text fontSize="xl" color="primary.main">
+              <Text fontSize="xl" color="secondary.dark">
                 Resources
               </Text>
             </MenuButton>
@@ -126,7 +126,7 @@ export default function Navbar() {
             </MenuList>
           </Menu>
           <Link href="/articles" className="links">
-            <Text fontSize="xl" color="primary.main">
+            <Text fontSize="xl" color="secondary.dark">
               Blog
             </Text>
           </Link>

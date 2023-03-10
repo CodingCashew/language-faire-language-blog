@@ -34,7 +34,7 @@ function Speaking({ speaking }:any) {
             <Text>{prac.title}</Text>
             <Link href={`/speaking/${prac.id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
-                Go To Speaking Practice >
+                Go To Speaking Practice
               </Button>
             </Link>
           </CardBody>

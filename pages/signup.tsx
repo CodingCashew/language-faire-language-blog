@@ -15,7 +15,7 @@ function SignUp() {
 
   // const [loggedIn, setLoggedIn] = useState(false);
   const [values, setValues] = useState(initialValues);
-  const handleChange = e => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target
     setValues({
       ...values,

@@ -24,7 +24,7 @@ export async function getServerSideProps(context: any) {
 }
 
 
-function Vocab({ vocab }) {
+function Vocab({ vocab }:any) {
   return (
     <Container maxW="xl">
       <Text fontSize="xl" m={3}>

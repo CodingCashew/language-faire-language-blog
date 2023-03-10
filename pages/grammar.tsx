@@ -32,7 +32,7 @@ function Grammar() {
             <Text>{exercise.title}</Text>
             <Link href={`/grammar/${exercise.id}`}>
               <Button bgColor="primary.main" m="1rem" color="white">
-                Go To Grammar Exercise >
+                Go To Grammar Exercise ~
               </Button>
             </Link>
           </CardBody>

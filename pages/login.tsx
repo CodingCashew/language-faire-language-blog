@@ -19,7 +19,7 @@ function Login() {
   const handleShow = () => setShow(!show);
 
   const [values, setValues] = useState(initialValues);
-  const handleChange = e => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target
     setValues({
       ...values,
@@ -107,7 +107,7 @@ function Login() {
             </Container>
             <Button bgColor="purple" color="white" onClick={oAuth} >Log In with Google</Button>
             <Button bgColor="purple" color="white" onClick={oAuth} >Log In with Facebook</Button>
-            <Button variant="link" fontSize='xs' color="#718096" ><Link href="/signup">Don't have an account yet? Sign Up ~</Link></Button>
+            <Button variant="link" fontSize='xs' color="#718096" ><Link href="/signup"><Text>Dont have an account yet? Sign Up ~</Text></Link></Button>
           </Stack>
         </Container>
       </Box>

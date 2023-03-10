@@ -12,18 +12,17 @@ const theme = extendTheme({
       light: "#ED64A6",
       main: "#D53F8C",
       dark: "#97266D",
-      // light: '#0BC5EA',
-      // main: '#00A3C4',
-      // dark: '#086F83',
     },
     secondary: {
-      light: "#F6E05E",
-      main: "#ECC94B",
-      dark: "#D69E2E",
-      // light: '#68D391',
-      // main: '#38A169',
-      // dark: '#276749',
+      light: "#ECC94B",
+      main: "#D69E2E",
+      dark: "#ED8936",
     },
+    tertiary: {
+      light: "#9F7AEA",
+      main: "#805AD5",
+      dark: "#553C9A"
+    }
   },
   fonts: {
     body: "system-ui, sans-serif",

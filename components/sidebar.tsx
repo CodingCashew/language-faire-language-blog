@@ -6,12 +6,14 @@ export interface LabelValue {
   value: string
 }
 
-export default function Sidebar({items}:any) {
+
+
+export default function Sidebar({links}:any) {
   return (
-    <Container maxW="2xs">
+    <Container minW="2xs" maxW="xs">
       <Card minH="sm" m={3}>
-      {items.map((item:any, index:any) => (
-        <Link href={`/resources/${item.value}`} key={index}><Text size="xl" m={4}>{item.label}</Text></Link>
+      {links.map((item:any, index:any) => (
+        <Link href={`/resources/${item.value}`} key={index}><Text fontSize="lg" m={4}>{item.label}</Text></Link>
       ))}
       </Card>
     </Container>

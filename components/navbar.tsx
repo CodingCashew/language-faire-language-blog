@@ -65,45 +65,79 @@ export default function Navbar() {
           </Menu>
         )} */}
         {/* {isDesktopOrLaptop && ( */}
-          <div className="mainLinksContainer">
-            <Link href="/listening" className="links">
-              <Text fontSize="xl" color="primary.main">
-                Listening
-              </Text>
-            </Link>
-            <Link href="/speaking" className="links">
-              <Text fontSize="xl" color="primary.main">
-                Speaking
-              </Text>
-            </Link>
-            <Link href="/grammar" className="links">
-              <Text fontSize="xl" color="primary.main">
-                Grammar
-              </Text>
-            </Link>
-            <Link href="/vocab" className="links">
-              <Text fontSize="xl" color="primary.main">
-                Vocabulary
-              </Text>
-            </Link>
-            <Link href="/resources" className="links">
+        <div className="mainLinksContainer">
+          <Link href="/listening" className="links">
+            <Text fontSize="xl" color="primary.main">
+              Listening
+            </Text>
+          </Link>
+          <Link href="/speaking" className="links">
+            <Text fontSize="xl" color="primary.main">
+              Speaking
+            </Text>
+          </Link>
+          <Link href="/grammar" className="links">
+            <Text fontSize="xl" color="primary.main">
+              Grammar
+            </Text>
+          </Link>
+          <Link href="/vocab" className="links">
+            <Text fontSize="xl" color="primary.main">
+              Vocabulary
+            </Text>
+          </Link>
+          <Menu isLazy>
+            <MenuButton className="links">
               <Text fontSize="xl" color="primary.main">
                 Resources
               </Text>
-            </Link>
-            <Link href="/articles" className="links">
-              <Text fontSize="xl" color="primary.main">
-                Blog
-              </Text>
-            </Link>
-            <Link href="/login" className="links">
-              <Text fontSize="xl">Log In</Text>
-            </Link>
-            <Link href="/signup" className="links">
-              <Text fontSize="xl">Sign Up</Text>
-            </Link>
-            <Search2Icon className="search" boxSize={5} color="primary.main" />
-          </div>
+            </MenuButton>
+            <MenuList>
+              <MenuItem>
+                <Link href="/resources">
+                  <Text fontSize="lg">Resources</Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/resources/pdf">
+                  <Text fontSize="lg">Cheat Sheets</Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/resources/games">
+                  <Text fontSize="lg">English Games</Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/resources/music">
+                  <Text fontSize="lg">Learn with Music</Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/resources/youtube">
+                  <Text fontSize="lg">FYH English YouTube Videos</Text>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/resources/podcast">
+                  <Text fontSize="lg">FYH English Podcast</Text>
+                </Link>
+              </MenuItem>
+            </MenuList>
+          </Menu>
+          <Link href="/articles" className="links">
+            <Text fontSize="xl" color="primary.main">
+              Blog
+            </Text>
+          </Link>
+          <Link href="/login" className="links">
+            <Text fontSize="xl">Log In</Text>
+          </Link>
+          <Link href="/signup" className="links">
+            <Text fontSize="xl">Sign Up</Text>
+          </Link>
+          <Search2Icon className="search" boxSize={5} color="primary.main" />
+        </div>
         {/* )} */}
       </div>
     </Box>

@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Container,
   Text,
@@ -8,19 +8,22 @@ import {
   Image,
   Link,
 } from "@chakra-ui/react";
-import { useState } from "react";
 
-export interface Article {
+interface Article {
   _id: number;
   title: string;
-  article_content: string;
+  content: string;
   id: string;
+  likes: number;
+  comments: [];
 }
 
 export default function Articles({ articles }: any) {
   return (
     <Container maxW="xl" centerContent>
-      <Text fontSize="2xl" color="primary.dark">{"My Lovely Articles:"}</Text>
+      <Text fontSize="2xl" color="primary.dark">
+        {"My Lovely Articles:"}
+      </Text>
 
       {articles.map((article: Article) => (
         <Card mt={2} key={article._id}>
@@ -30,11 +33,14 @@ export default function Articles({ articles }: any) {
               alt="language blog logo"
               w="75%"
             />
-            <Text fontSize="xl">{article.title}</Text>
-            <Text fontSize="md">{article.article_content.slice(0, 100)}...</Text>
+            <Link href={`/articles/${article.id}`}>
+              <Text fontSize="xl">{article.title}</Text>
+            </Link>
+            <Text fontSize="md">{article.content.slice(0, 100)}...</Text>
             <Link href={`/articles/${article.id}`}>
               <Button bgColor="secondary.dark" m="1rem" color="white">
-                Read Article<ChevronRightIcon />
+                Continue Reading
+                <ChevronRightIcon />
               </Button>
             </Link>
           </CardBody>

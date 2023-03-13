@@ -56,7 +56,8 @@ function Login() {
   return (
     <div >
       <Box
-        bgColor="#D6BCFA"
+         bgGradient='linear(to-br, tertiary.main, secondary.dark)'
+        //  bgColor='secondary.main'
         h="100%"
         w="100%"
         minH="3xl">
@@ -65,7 +66,7 @@ function Login() {
           display="flex"
           flexDirection="column"
           alignItems="center">
-          <Text fontSize="2xl" paddingY="2rem" ><ArrowRightIcon marginRight="1rem" />Continue Your Language Learning Journey</Text>
+          <Text fontSize="2xl" paddingY="2rem" color="white"><ArrowRightIcon marginRight="1rem" color="white"/>Continue Your Language Learning Journey</Text>
           <Stack spacing={5} w="75%" >
             <Input
               placeholder='Email Address'
@@ -94,7 +95,8 @@ function Login() {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <Button bgGradient='linear(to-r, teal, purple)' color="white" onClick={login} >Log In</Button>
+            {/* <Button bgGradient='linear(to-r, secondary.main, tertiary.main)' color="white" onClick={login} >Log In</Button> */}
+            <Button bgColor='secondary.main' color="white" onClick={login} >Log In</Button>
             <Button variant="link" fontSize='xs' color="#718096" >Forgot Password?</Button>
             <Container
               display="flex"
@@ -105,8 +107,8 @@ function Login() {
               <Text color="#718096">or</Text>
               <Divider w="47%" bgColor="#718096"/>
             </Container>
-            <Button bgColor="purple" color="white" onClick={oAuth} >Log In with Google</Button>
-            <Button bgColor="purple" color="white" onClick={oAuth} >Log In with Facebook</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth} >Log In with Google</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth} >Log In with Facebook</Button>
             <Button variant="link" fontSize='xs' color="#718096" ><Link href="/signup"><Text>Dont have an account yet? Sign Up ~</Text></Link></Button>
           </Stack>
         </Container>

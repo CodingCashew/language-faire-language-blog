@@ -25,10 +25,11 @@ const resources = [
 ]
 
 function Resources() {
+  const section = "resources"
   return (
     <Container maxW="6xl" minH="sm">
       <Flex maxW="5xl">
-        <Sidebar links={resourcesLinks} />
+        <Sidebar links={resourcesLinks} section={section} />
         <Flex minH="sm" direction="column">
           <Text align="center" fontSize="2xl">
             Best Resources Ever

@@ -7,7 +7,10 @@ import {
   CardBody,
   Image,
   Link,
+  Flex,
 } from "@chakra-ui/react";
+import Sidebar from "../components/sidebar";
+import { blogLinks } from "../components/sidebarLinks";
 
 interface Article {
   _id: number;
@@ -21,31 +24,36 @@ interface Article {
 export default function Articles({ articles }: any) {
   return (
     <Container maxW="xl" centerContent>
-      <Text fontSize="2xl" color="primary.dark">
-        {"My Lovely Articles:"}
-      </Text>
+      <Flex>
+        <Sidebar links={blogLinks} section={"articles"} />
+        <Flex flexDirection="column" minW="2xl">
+          <Text fontSize="2xl" color="primary.dark">
+            {"My Lovely Articles:"}
+          </Text>
 
-      {articles.map((article: Article) => (
-        <Card mt={2} key={article._id}>
-          <CardBody>
-            <Image
-              src="/blogArticleThumbnail.avif"
-              alt="language blog logo"
-              w="75%"
-            />
-            <Link href={`/articles/${article.id}`}>
-              <Text fontSize="xl">{article.title}</Text>
-            </Link>
-            <Text fontSize="md">{article.content.slice(0, 100)}...</Text>
-            <Link href={`/articles/${article.id}`}>
-              <Button bgColor="secondary.dark" m="1rem" color="white">
-                Continue Reading
-                <ChevronRightIcon />
-              </Button>
-            </Link>
-          </CardBody>
-        </Card>
-      ))}
+          {articles.map((article: Article) => (
+            <Card mt={2} key={article._id}>
+              <CardBody>
+                <Image
+                  src="/blogArticleThumbnail.avif"
+                  alt="language blog logo"
+                  w="75%"
+                />
+                <Link href={`/articles/${article.id}`}>
+                  <Text fontSize="xl">{article.title}</Text>
+                </Link>
+                <Text fontSize="md">{article.content.slice(0, 100)}...</Text>
+                <Link href={`/articles/${article.id}`}>
+                  <Button bgColor="secondary.dark" m="1rem" color="white">
+                    Continue Reading
+                    <ChevronRightIcon />
+                  </Button>
+                </Link>
+              </CardBody>
+            </Card>
+          ))}
+        </Flex>
+      </Flex>
     </Container>
   );
 }

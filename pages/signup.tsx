@@ -53,8 +53,7 @@ function SignUp() {
   return (
     <div>
       <Box
-        bgGradient='linear(to-b, #B794F4, #4FD1C5)'
-        bgColor="#4FD1C5"
+        bgGradient='linear(to-tl, primary.main, secondary.light)'
         h="100%"
         w="100%"
         minH="3xl">
@@ -99,20 +98,19 @@ function SignUp() {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <Button bgColor="#4FD1C5" color="white" onClick={createUser} >Sign Up Free</Button>
-            {/* <Button bgGradient='linear(to-bl, #38B2AC, #805AD5)' color="white">Sign Up Free</Button> */}
-            <Button variant="link" fontSize='xs' color="#718096" ><Link href="/login">Already Have An Account? Log In~</Link></Button>
+            <Button bgColor="tertiary.dark" color="white" onClick={createUser} >Sign Up Free</Button>
+            <Button variant="link" color="black" fontSize='xs'><Link href="/login">Already Have An Account? Log In~</Link></Button>
             <Container
               display="flex"
               flexDirection="row"
               justifyContent="center"
               alignItems="center">
-              <Divider w="47%" bgColor="#718096"/>
-              <Text color="#718096">or</Text>
-              <Divider w="47%" bgColor="#718096"/>
+              <Divider w="47%"  />
+              <Text >or</Text>
+              <Divider w="47%" />
             </Container>
-            <Button bgColor="#B794F4" color="white" onClick={oAuth}>Continue with Google</Button>
-            <Button bgColor="#B794F4" color="white" onClick={oAuth}>Continue with Facebook</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth}>Continue with Google</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth}>Continue with Facebook</Button>
           </Stack>
         </Container>
       </Box>

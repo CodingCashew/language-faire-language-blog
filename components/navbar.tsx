@@ -10,6 +10,8 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { BsPersonCircle } from "react-icons/bs";
+
 import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
 
@@ -136,7 +138,12 @@ export default function Navbar() {
           <Link href="/signup" className="links">
             <Text fontSize="xl">Sign Up</Text>
           </Link>
-          <Search2Icon className="search" boxSize={5} color="primary.main" />
+          <Link href="/account" className="links">
+            <BsPersonCircle className="search" size={25} color="primary.main" />
+          </Link>
+          <Link href="/search" className="links">
+            <Search2Icon className="search" boxSize={5} color="primary.main" />
+          </Link>
         </div>
         {/* )} */}
       </div>

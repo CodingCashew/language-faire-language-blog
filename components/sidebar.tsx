@@ -8,12 +8,12 @@ export interface LabelValue {
 
 
 
-export default function Sidebar({links}:any) {
+export default function Sidebar({links, section}:any) {
   return (
     <Container minW="2xs" maxW="xs">
       <Card minH="sm" m={3}>
       {links.map((item:any, index:any) => (
-        <Link href={`/resources/${item.value}`} key={index}><Text fontSize="lg" m={4}>{item.label}</Text></Link>
+        <Link href={`/${section}/${item.value}`} key={index}><Text fontSize="lg" m={4}>{item.label}</Text></Link>
       ))}
       </Card>
     </Container>

@@ -11,7 +11,8 @@ import { ArrowRightIcon } from "@chakra-ui/icons";
 export default function Home() {
   return (
     <div>
-        <Box w="100%" h="100%" bgGradient="linear(to-br, primary.light, tertiary.light)">
+<Box w="100%" h="100%" bgGradient="linear(to-tr, secondary.light, primary.main)">
+        {/* <Box w="100%" h="100%" bgGradient="linear(to-br, primary.light, tertiary.light)"> */}
           <Container
             maxW="4xl"
             minHeight="md"
@@ -92,7 +93,8 @@ export default function Home() {
             />
           </Container>
         </Box>
-        <Box w="100%" h="sm" bgGradient="linear(to-l, secondary.light, primary.main)">
+        <Box w="100%" h="100%" bgGradient="linear(to-r, primary.light, tertiary.light)">
+        {/* <Box w="100%" h="sm" bgGradient="linear(to-l, secondary.light, primary.main)"> */}
           <Container
             maxW="3xl"
             minHeight="sm"

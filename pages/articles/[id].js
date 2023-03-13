@@ -21,6 +21,8 @@ import {
 } from "react-icons/ai";
 import { useState } from "react";
 import NavButtons from "../../components/navButtons";
+import Sidebar from "../../components/sidebar";
+import { blogLinks } from "../../components/sidebarLinks";
 
 export const getServerSideProps = async (context) => {
   const res = await fetch("http://localhost:3000/api/articles/", {
@@ -115,10 +117,13 @@ export default function Article({ article, numOfArticles }) {
   };
 
   return (
-    <Container maxW="2xl" minH="sm" pt={5}>
+    <Container maxW="6xl" minH="sm" pt={5}>
+      <Flex>
+      <Sidebar links={blogLinks} section={'articles'}  />
+      <Flex maxW="3xl" flexDirection="column">
       <Card key={article.id}>
         <CardHeader>
-          <Heading size="md">{article.title}</Heading>
+          <Heading size="md" p={5}>{article.title}</Heading>
         </CardHeader>
         <Image
           objectFit='cover'
@@ -128,7 +133,7 @@ export default function Article({ article, numOfArticles }) {
           alt="Chakra UI"
         />
         <CardBody>
-          <Text>{article.content}</Text>
+          <Text p={7}>{article.content}</Text>
         </CardBody>
         <Text alignSelf="flex-end" p={5}>
           {numOfLikes > 0 &&
@@ -202,6 +207,8 @@ export default function Article({ article, numOfArticles }) {
           </Container>
         </CardFooter>
       </Card>
+      </Flex>
+      </Flex>
       <NavButtons numOfExercises={numOfArticles} section={section} />
     </Container>
   );

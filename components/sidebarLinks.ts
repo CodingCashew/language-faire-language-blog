@@ -1,4 +1,10 @@
+export const accountLinks = [
+  { label: "Profile", value: "profile" },
+  { label: "Settings", value: "settings" },
+  { label: "Log Out", value: "" },
+];
 export const resourcesLinks = [
+  { section: "resources" },
   { label: "General Resources", value: "" },
   { label: "Cheat Sheets", value: "pdf" },
   { label: "English Games", value: "games" },
@@ -7,42 +13,28 @@ export const resourcesLinks = [
   { label: "Podcast", value: "podcast" },
 ];
 export const listeningLinks = [
+  // { section: "listening" },
   { label: "General Resources", value: "" },
-  { label: "Cheat Sheets", value: "pdf" },
-  { label: "English Games", value: "games" },
-  { label: "Learn with Music", value: "music" },
-  { label: "YouTube Videos", value: "youtube" },
-  { label: "Podcast", value: "podcast" },
+
 ];
 export const speakingLinks = [
+  // { section: "speaking" },
   { label: "General Resources", value: "" },
-  { label: "Cheat Sheets", value: "pdf" },
-  { label: "English Games", value: "games" },
-  { label: "Learn with Music", value: "music" },
-  { label: "YouTube Videos", value: "youtube" },
-  { label: "Podcast", value: "podcast" },
+
 ];
 export const grammarLinks = [
+  // { section: "grammar" },
   { label: "General Resources", value: "" },
-  { label: "Cheat Sheets", value: "pdf" },
-  { label: "English Games", value: "games" },
-  { label: "Learn with Music", value: "music" },
-  { label: "YouTube Videos", value: "youtube" },
-  { label: "Podcast", value: "podcast" },
+
 ];
 export const vocabLinks = [
+  // { section: "vocab" },
   { label: "General Resources", value: "" },
-  { label: "Cheat Sheets", value: "pdf" },
-  { label: "English Games", value: "games" },
-  { label: "Learn with Music", value: "music" },
-  { label: "YouTube Videos", value: "youtube" },
-  { label: "Podcast", value: "podcast" },
+
 ];
 export const blogLinks = [
-  { label: "General Resources", value: "" },
-  { label: "Cheat Sheets", value: "pdf" },
-  { label: "English Games", value: "games" },
-  { label: "Learn with Music", value: "music" },
-  { label: "YouTube Videos", value: "youtube" },
-  { label: "Podcast", value: "podcast" },
+  // { section: "articles" },
+  { label: "First Article", value: "1" },
+  { label: "You Are A Coding Goddess!", value: "2" },
+  { label: "One thing I learned from Gabriel Wyner", value: "3" },
 ];

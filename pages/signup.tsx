@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Box, Container, Text, Stack, Input, Button, Divider, Link, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { ChatIcon } from "@chakra-ui/icons"
+import bcrypt from 'bcrypt';
 
 const initialValues = {
   email: '',
-  username: '',
+  // username: '',
   password: ''
 }
 
@@ -24,24 +25,25 @@ function SignUp() {
   }
 
   const createUser = (e: any) => {
-    fetch('/signup', {
+
+    fetch('/api/signup', {
       method: 'POST',
-      body: JSON.stringify({ email: values.email, username: values.username, password: values.password }),
+      body: JSON.stringify({ email: values.email, password: values.password }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        alert('You successfully created a new account')
+        // alert('You successfully created a new account')
 
         // setLoggedIn(true);
         // console.log("loggedIn?:", loggedIn)
-        setValues({
-          email: '',
-          username: '',
-          password: ''
-        })
-        // TO DO: redirect to href="/wall"
+
+        // setValues({
+        //   email: '',
+        //   password: ''
+        // })
+        // TO DO: redirect to href="/account"
       })
       .catch((err) => console.log(err));
   }
@@ -71,13 +73,13 @@ function SignUp() {
               value={values.email}
               name={"email"}
               onChange={handleChange} />
-            <Input
+            {/* <Input
               placeholder='Username'
               size='md'
               bgColor="#F7FAFC"
               value={values.username}
               name={"username"}
-              onChange={handleChange} />
+              onChange={handleChange} /> */}
             <InputGroup size='md'>
               <Input
                 pr='4.5rem'

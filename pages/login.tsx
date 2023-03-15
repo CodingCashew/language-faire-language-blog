@@ -29,24 +29,21 @@ function Login() {
   }
 
   const login = () => {
-    fetch('/login', {
+    fetch('/api/login', {
       method: 'POST',
       body: JSON.stringify({ email: values.email, password: values.password }),
       headers: { 'Content-Type': 'application/json' },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('logged in?:', data)
-        setValues(initialValues)
+        console.log('data in login:', data)
+        // setValues(initialValues)
       })
       .catch((err) => {
-        // setValues({
-        //   email: '',
-        //   password: ''
-        // })
-        // setShow(false)
-        console.log(err)
+        console.log('error!: ', err)
       })
+
+      setShow(false)
   }
 
   const oAuth = () => {

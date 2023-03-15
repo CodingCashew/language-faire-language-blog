@@ -23,10 +23,10 @@ interface Article {
 
 export default function Articles({ articles }: any) {
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="7xl" centerContent pt={8}>
       <Flex>
-        <Sidebar links={blogLinks} section={"articles"} />
-        <Flex flexDirection="column" minW="2xl">
+        <Sidebar links={blogLinks} section={"articles"} maxW="sm"/>
+        <Flex flexDirection="column" maxW="4xl">
           <Text fontSize="2xl" color="primary.dark">
             {"My Lovely Articles:"}
           </Text>

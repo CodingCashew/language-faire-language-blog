@@ -191,6 +191,7 @@ function GrammarExercise({ grammar, numOfExercises }) {
             <Button onClick={clearAnswers}>Reset Answers</Button>
         </Flex>
       </Container>
+      <Text value="have" draggable="true">have</Text>
       <NavButtons numOfExercises={numOfExercises} section={section} />
     </Container>
   );

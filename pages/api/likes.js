@@ -8,7 +8,7 @@ const handler = async (req, res) => {
       try {
         const client = await clientPromise;
         const db = client.db("Langship");
-  
+
         const likes = await db
           .collection("Articles")
           .updateOne({ id: id }, { $inc: { likes: 1 } });
@@ -16,12 +16,11 @@ const handler = async (req, res) => {
       } catch (e) {
         console.error(e);
       }
-    }
-    else if (addOrRemoveLike === 'removeLike') {
+    } else if (addOrRemoveLike === "removeLike") {
       try {
         const client = await clientPromise;
         const db = client.db("Langship");
-  
+
         const likes = await db
           .collection("Articles")
           .updateOne({ id: id }, { $inc: { likes: -1 } });
@@ -30,7 +29,7 @@ const handler = async (req, res) => {
         console.error(e);
       }
     }
-    }
+  }
 };
 
 export default handler;

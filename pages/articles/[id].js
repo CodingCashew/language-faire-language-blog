@@ -45,6 +45,7 @@ export const getServerSideProps = async (context) => {
 export default function Article({ article, numOfArticles }) {
   const section = "articles";
   const [numOfLikes, setNumOfLikes] = useState(article.likes);
+  const [numOfShares, setNumOfShares] = useState(article.shares);
   const [liked, setLiked] = useState(false);
   const handleLike = async () => {
     const previousLikeCount = numOfLikes;
@@ -75,6 +76,18 @@ export default function Article({ article, numOfArticles }) {
       setNumOfLikes(previousLikeCount + 1);
     }
   };
+  const handleShare = async () => {
+    const previousShareCount = numOfShares;
+    const res = await fetch("/api/share", {
+      method: "POST",
+      body: JSON.stringify({ addShare: 1, id: article.id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    setNumOfShares(previousShareCount + 1);
+  };
 
   const [comments, setComments] = useState(article.comments);
   const [isCommenting, setIsCommenting] = useState(false);
@@ -96,7 +109,6 @@ export default function Article({ article, numOfArticles }) {
   };
 
   const postComment = async (e) => {
-    // console.log('date in res: ', new Date().toDateString())
     const res = await fetch("/api/comments", {
       method: "POST",
       body: JSON.stringify({
@@ -119,95 +131,103 @@ export default function Article({ article, numOfArticles }) {
   return (
     <Container maxW="6xl" minH="sm" pt={5}>
       <Flex>
-      <Sidebar links={blogLinks} section={'articles'}  />
-      <Flex maxW="3xl" flexDirection="column">
-      <Card key={article.id}>
-        <CardHeader>
-          <Heading size="md" p={5}>{article.title}</Heading>
-        </CardHeader>
-        <Image
-          objectFit='cover'
-          minW="sm"
-          alignSelf="center"
-          src="https://picsum.photos/300/200"
-          alt="Chakra UI"
-        />
-        <CardBody>
-          <Text p={7}>{article.content}</Text>
-        </CardBody>
-        <Text alignSelf="flex-end" p={5}>
-          {numOfLikes > 0 &&
-            `${numOfLikes}${numOfLikes > 1 ? " Likes" : " Like"}`}
-        </Text>
-        <CardFooter
-          flexWrap="wrap"
-          sx={{
-            "& > button": {
-              minW: "136px",
-            },
-          }}
-        >
-          <Button flex="1" variant="ghost" m={3} onClick={handleLike}>
-            Like{!liked && <AiOutlineLike pl={6} />}
-            {liked && <AiFillLike pl={6} />}
-          </Button>
-          <Button flex="1" variant="ghost" m={3} onClick={handleCommenting}>
-            Comment
-            <AiOutlineComment pl={6} />
-          </Button>
-          <Button flex="1" variant="ghost" m={3}>
-            Share
-            <AiOutlineShareAlt pl={6} />
-          </Button>
-          <Divider />
-          {!comments.length && !isCommenting && (
-            <Text>Be the first to comment.</Text>
-          )}
-          {isCommenting && (
-            <Container>
-              <Input
-                placeholder="Name"
-                onChange={handleChange}
-                value={currentComment.username}
-                name="username"
-                required
-              />
-              <Textarea
-                placeholder="Leave a Comment"
-                onChange={handleChange}
-                value={currentComment.content}
-                name="content"
-                required
-              />
-              <Button
-                backgroundColor="tertiary.dark"
-                color="white"
-                onClick={postComment}
-                mt={3}
-              >
-                Add Comment
+        <Sidebar links={blogLinks} section={"articles"} />
+        <Flex maxW="3xl" flexDirection="column">
+          <Card key={article.id}>
+            <CardHeader>
+              <Heading size="md" p={5}>
+                {article.title}
+              </Heading>
+            </CardHeader>
+            <Image
+              objectFit="cover"
+              minW="sm"
+              alignSelf="center"
+              src="https://picsum.photos/300/200"
+              alt="Chakra UI"
+            />
+            <CardBody>
+              <Text p={7}>{article.content}</Text>
+            </CardBody>
+            <Flex flexDirection="column">
+              <Text alignSelf="flex-end" pr={6}>
+                {numOfLikes > 0 &&
+                  `${numOfLikes}${numOfLikes > 1 ? " Likes" : " Like"}`}
+              </Text>
+              <Text alignSelf="flex-end" pt={3} pr={6}>
+                {numOfShares > 0 &&
+                  `${numOfShares}${numOfShares > 1 ? " Shares" : " Share"}`}
+              </Text>
+            </Flex>
+            <CardFooter
+              flexWrap="wrap"
+              sx={{
+                "& > button": {
+                  minW: "136px",
+                },
+              }}
+            >
+              <Button flex="1" variant="ghost" m={3} onClick={handleLike}>
+                Like{!liked && <AiOutlineLike pl={6} />}
+                {liked && <AiFillLike pl={6} />}
               </Button>
-            </Container>
-          )}
-          <Container>
-            {comments.length > 0 &&
-              comments.map((comment, i) => (
-                <Flex key={i} direction="column" maxW="lg">
-                  <Flex direction="row" justifyContent="space-between">
-                    <Text pt={5} fontSize="sm" color="grey">
-                      {comment.commenter}
-                    </Text>
-                    <Text pt={5} fontSize="sm" color="grey">
-                      {new Date(comment.date_written).toDateString()}
-                    </Text>
-                  </Flex>
-                  <Text minW="3xl">{comment.content}</Text>
-                </Flex>
-              ))}
-          </Container>
-        </CardFooter>
-      </Card>
-      </Flex>
+              <Button flex="1" variant="ghost" m={3} onClick={handleCommenting}>
+                Comment
+                <AiOutlineComment pl={6} />
+              </Button>
+              <Button flex="1" variant="ghost" m={3} onClick={handleShare}>
+                Share
+                <AiOutlineShareAlt pl={6} />
+              </Button>
+              <Divider />
+              {!comments.length && !isCommenting && (
+                <Text>Be the first to comment.</Text>
+              )}
+              {isCommenting && (
+                <Container>
+                  <Input
+                    placeholder="Name"
+                    onChange={handleChange}
+                    value={currentComment.username}
+                    name="username"
+                    required
+                  />
+                  <Textarea
+                    placeholder="Leave a Comment"
+                    onChange={handleChange}
+                    value={currentComment.content}
+                    name="content"
+                    required
+                  />
+                  <Button
+                    backgroundColor="tertiary.dark"
+                    color="white"
+                    onClick={postComment}
+                    mt={3}
+                  >
+                    Add Comment
+                  </Button>
+                </Container>
+              )}
+              <Container>
+                {comments.length > 0 &&
+                  comments.map((comment, i) => (
+                    <Flex key={i} direction="column" maxW="lg">
+                      <Flex direction="row" justifyContent="space-between">
+                        <Text pt={5} fontSize="sm" color="grey">
+                          {comment.commenter}
+                        </Text>
+                        <Text pt={5} fontSize="sm" color="grey">
+                          {new Date(comment.date_written).toDateString()}
+                        </Text>
+                      </Flex>
+                      <Text minW="3xl">{comment.content}</Text>
+                    </Flex>
+                  ))}
+              </Container>
+            </CardFooter>
+          </Card>
+        </Flex>
       </Flex>
       <NavButtons numOfExercises={numOfArticles} section={section} />
     </Container>

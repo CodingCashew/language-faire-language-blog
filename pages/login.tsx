@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Container, Text, Stack, Input, Button, Divider, Link, InputGroup, InputRightElement } from '@chakra-ui/react';
 import { ArrowRightIcon } from "@chakra-ui/icons"
+import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
+
 
 export interface User {
   email: string,
@@ -104,8 +106,8 @@ function Login() {
               <Text color="#718096">or</Text>
               <Divider w="47%" bgColor="#718096"/>
             </Container>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth} >Log In with Google</Button>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth} >Log In with Facebook</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth} ><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />Log In with Google</Button>
+            <Button bgColor="primary.dark" color="white" onClick={oAuth} ><AiFillFacebook size={25} style={{ marginRight: '6px' }} />Log In with Facebook</Button>
             <Button variant="link" fontSize='xs' color="#718096" ><Link href="/signup"><Text>Dont have an account yet? Sign Up ~</Text></Link></Button>
           </Stack>
         </Container>

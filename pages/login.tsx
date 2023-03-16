@@ -3,7 +3,6 @@ import { Box, Container, Text, Stack, Input, Button, Divider, Link, InputGroup, 
 import { ArrowRightIcon } from "@chakra-ui/icons"
 import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
 
-
 export interface User {
   email: string,
   username?: string,
@@ -48,9 +47,26 @@ function Login() {
       setShow(false)
   }
 
-  const oAuth = () => {
+  const facebookOAuth = () => {
     alert('OAuth functionality in progress...')
+    // fetch('/api/facebook', {
+    //   method: 'POST',
+    //   body: JSON.stringify({ email: values.email, password: values.password }),
+    //   headers: { 'Content-Type': 'application/json' },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log('data in login:', data)
+    //     // setValues(initialValues)
+    //   })
+    //   .catch((err) => {
+    //     console.log('error!: ', err)
+    //   })
+
   }
+  const googleOAuth = () => {
+    alert("OAuth functionality in progress...");
+  };
 
   return (
     <div >
@@ -106,8 +122,8 @@ function Login() {
               <Text color="#718096">or</Text>
               <Divider w="47%" bgColor="#718096"/>
             </Container>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth} ><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />Log In with Google</Button>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth} ><AiFillFacebook size={25} style={{ marginRight: '6px' }} />Log In with Facebook</Button>
+            <Button bgColor="primary.dark" color="white" onClick={googleOAuth} ><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />Log In with Google</Button>
+            <Button bgColor="primary.dark" color="white" onClick={facebookOAuth} ><AiFillFacebook size={25} style={{ marginRight: '6px' }} />Log In with Facebook</Button>
             <Button variant="link" fontSize='xs' color="#718096" ><Link href="/signup"><Text>Dont have an account yet? Sign Up ~</Text></Link></Button>
           </Stack>
         </Container>

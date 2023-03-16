@@ -18,7 +18,7 @@ export default function Music() {
   return (
     <Container maxW="6xl" minH="sm">
       <Flex maxW="4xl">
-        <Sidebar links={resourcesLinks} />
+        <Sidebar links={resourcesLinks} section="resources"/>
         <Flex flexDirection="column" gap={3}>
           {musicLinks.map((musicLink) => (
             <Container key={musicLink.id} >

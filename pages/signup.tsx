@@ -14,7 +14,8 @@ import {
 
 import { AiFillFacebook, AiFillGoogleCircle } from "react-icons/ai";
 import { ChatIcon } from "@chakra-ui/icons";
-import FacebookStrategy from 'passport-facebook'
+const passport = require('passport')
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 const initialValues = {
   email: "",
@@ -70,7 +71,10 @@ function SignUp() {
     }
   };
 
-  const oAuth = () => {
+  const facebookOAuth = () => {
+    alert("OAuth functionality in progress...");
+  };
+  const googleOAuth = () => {
     alert("OAuth functionality in progress...");
   };
 
@@ -152,10 +156,10 @@ function SignUp() {
               <Text>or</Text>
               <Divider w="47%" />
             </Container>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth}><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />
+            <Button bgColor="primary.dark" color="white" onClick={googleOAuth}><AiFillGoogleCircle size={25} style={{ marginRight: '6px' }} />
               Continue with Google
             </Button>
-            <Button bgColor="primary.dark" color="white" onClick={oAuth}><AiFillFacebook size={25} style={{ marginRight: '6px' }} />
+            <Button bgColor="primary.dark" color="white" onClick={facebookOAuth}><AiFillFacebook size={25} style={{ marginRight: '6px' }} />
               Continue with Facebook
             </Button>
           </Stack>

@@ -13,13 +13,13 @@ export const resourcesLinks = [
   { label: "Podcast", value: "podcast" },
 ];
 export const listeningLinks = [
-  // { section: "listening" },
-  { label: "General Resources", value: "" },
+  { label: "Listening 1: Fanny Goes to University", value: "1" },
+  { label: "Listening 2: Marco Finds a Special Surprise", value: "2" },
 
 ];
 export const speakingLinks = [
-  // { section: "speaking" },
-  { label: "General Resources", value: "" },
+  { label: "Speaking 1: Basic Chit-Chat", value: "1" },
+  { label: "Speaking 2: Talking About Vacations", value: "2" },
 
 ];
 export const grammarLinks = [

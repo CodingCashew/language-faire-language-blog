@@ -4,11 +4,13 @@ import {
   CardBody,
   Container,
   Text,
+  Flex,
   RadioGroup,
   Radio,
 } from "@chakra-ui/react";
 import { useState } from "react";
-
+import Sidebar from "../../components/sidebar";
+import { listeningLinks } from "../../components/sidebarLinks"
 import NavButtons from "../../components/navButtons";
 
 export const getServerSideProps = async (context) => {
@@ -76,6 +78,9 @@ function Listening({ listening, numOfExercises }) {
   return (
     <>
       <Container maxW="2xl">
+        <Flex maxW="5xl">
+        <Sidebar links={listeningLinks} section={'listening'} />
+        <Flex minH="sm" minW="5xl" direction="column">
         <Text fontSize="xl">{listening.title}</Text>
         <Container>
           <Card mt={3}>
@@ -131,6 +136,8 @@ function Listening({ listening, numOfExercises }) {
           </Card>
           <NavButtons numOfExercises={numOfExercises} section={section} />
         </Container>
+        </Flex>
+        </Flex>
       </Container>
     </>
   );

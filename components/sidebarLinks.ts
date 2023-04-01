@@ -4,7 +4,6 @@ export const accountLinks = [
   { label: "Log Out", value: "" },
 ];
 export const resourcesLinks = [
-  { section: "resources" },
   { label: "General Resources", value: "" },
   { label: "Cheat Sheets", value: "pdf" },
   { label: "English Games", value: "games" },

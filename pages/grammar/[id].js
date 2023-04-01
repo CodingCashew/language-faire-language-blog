@@ -70,6 +70,10 @@ function GrammarExercise({ grammar, numOfExercises }) {
 
   const clearAnswers = () => {
     setRevealingAnswers(false);
+    // setValues(for(let question in values) {
+    //   values[question] = ""
+    // }
+    // return values);
     setValues({
       one: "",
       two: "",
@@ -79,6 +83,9 @@ function GrammarExercise({ grammar, numOfExercises }) {
     });
     setCorrections({});
   };
+
+  // const iterateOverAnswersAndClear = (answers) => {
+  // }
 
   // const arrayOfStumps = [
   //   "I",

@@ -6,7 +6,7 @@ export default function Podcast() {
   return (
     <Container maxW="6xl" minH="sm">
       <Flex maxW="4xl">
-        <Sidebar links={resourcesLinks} />
+      <Sidebar links={resourcesLinks} section="resources" />
         <Container>
           <Text>Embed Podcast here</Text>
         </Container>

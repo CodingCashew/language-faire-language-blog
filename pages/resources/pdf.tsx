@@ -60,7 +60,7 @@ export default function Pdf() {
   return (
     <Container maxW="6xl" minH="sm">
       <Flex maxW="4xl">
-        <Sidebar links={resourcesLinks} />
+        <Sidebar links={resourcesLinks} section="resources" />
         <Flex flexDirection="row" flexWrap="wrap" minW="4xl">
           {pdfs.map((pdf) => (
             <Card maxW="xs" m={5} key={pdf.id}>

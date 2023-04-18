@@ -10,27 +10,7 @@ const answers = {
   five: "seen",
 };
 
-// export const getServerSideProps = async (context) => {
-//   const res = await fetch("http://localhost:3000/api/grammar/", {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-
-//   const data = await res.json();
-// const numOfExercises = data.length
-
-//   let grammar = data.filter((grammar) => grammar.id == context.query.id);
-
-//   grammar = grammar[0];
-
-//   return {
-//     props: { grammar, numOfExercises },
-//   };
-// };
-
-function GrammarExercise({ grammar, numOfExercises }) {
+function PresentPerfect({ grammar, numOfExercises }) {
   const section = "grammar";
   const [revealAnswers, setRevealingAnswers] = useState(false);
   const [values, setValues] = useState({
@@ -56,12 +36,10 @@ function GrammarExercise({ grammar, numOfExercises }) {
     for (let questionNumber in values) {
       if (
         values[questionNumber].toLowerCase().trim() !==
-        // grammar.answers[questionNumber].toLowerCase()
         answers[questionNumber].toLowerCase()
       ) {
         setCorrections((corrections) => ({
           ...corrections,
-          // [questionNumber]: grammar.answers[questionNumber],
           [questionNumber]: answers[questionNumber],
         }));
       }
@@ -70,10 +48,6 @@ function GrammarExercise({ grammar, numOfExercises }) {
 
   const clearAnswers = () => {
     setRevealingAnswers(false);
-    // setValues(for(let question in values) {
-    //   values[question] = ""
-    // }
-    // return values);
     setValues({
       one: "",
       two: "",
@@ -84,30 +58,8 @@ function GrammarExercise({ grammar, numOfExercises }) {
     setCorrections({});
   };
 
-  // const iterateOverAnswersAndClear = (answers) => {
-  // }
-
-  // const arrayOfStumps = [
-  //   "I",
-  //   {name: "one",
-  //   onChange: "{handleChange}"},
-  //   {name: "two",
-  //   onChange: "{handleChange}"},
-  //   {name: "three",
-  //   onChange: "{handleChange}"},
-  //   "France"
-  // ]
-
   return (
     <Container maxW="2xl" minH="md">
-
-      {/* {arrayOfStumps.reduce((acc, curr) => {
-        if (typeof curr === 'string') acc.push(<Text>{curr}</Text>)
-        else acc.push(<Input name={curr.name} onChange={curr.onChange}/>)
-        console.log('acc: ', acc)
-        return {...acc}
-      }, []).parse()} */}
-
       <Text fontSize="xl" align="center">
         Hardcoded Grammar Exercise
       </Text>
@@ -129,7 +81,6 @@ function GrammarExercise({ grammar, numOfExercises }) {
               </Text>
             )}
           </Flex>
-
           <Flex direction="column">
             <Input
               htmlSize={4}
@@ -198,10 +149,9 @@ function GrammarExercise({ grammar, numOfExercises }) {
             <Button onClick={clearAnswers}>Reset Answers</Button>
         </Flex>
       </Container>
-      <Text value="have" draggable="true">have</Text>
       <NavButtons numOfExercises={numOfExercises} section={section} />
     </Container>
   );
 }
 
-export default GrammarExercise;
+export default PresentPerfect;

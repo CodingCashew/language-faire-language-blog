@@ -31,9 +31,9 @@ const games = [
 export default function Games() {
   return (
     <Container maxW="6xl" minH="sm">
-      <Flex maxW="4xl">
+      <Flex maxW="5xl">
         <Sidebar links={resourcesLinks} />
-        <Flex flexWrap="wrap" >
+        <Flex flexWrap="wrap" minW="5xl">
           {games.map((game: any) => (
             <Card maxW="xs" m={5} key={game.id}>
               <CardBody>

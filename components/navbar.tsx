@@ -1,37 +1,19 @@
 import React from "react";
-import {
-  Box,
-  Text,
-  Image,
-  Menu,
-  MenuItem,
-  MenuButton,
-  MenuList,
-  IconButton,
-} from "@chakra-ui/react";
+import { Box, Text, Image } from "@chakra-ui/react";
 import Link from "next/link";
-import { BsPersonCircle } from "react-icons/bs";
-
-import { Search2Icon, HamburgerIcon } from "@chakra-ui/icons";
-import { useMediaQuery } from "react-responsive";
 
 export default function Navbar() {
-  // const isDesktopOrLaptop = useMediaQuery({
-  //   query: "(min-width: 1224px)",
-  // });
-  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  // const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
-  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
   return (
     <Box bg="gray.50" minH={20}>
       <div className="flexboxContainer">
         <Link href="/" className="landingPage">
-          <Image src="../logo1.png" alt="language blog logo" w="50px" />
+        <Image src="../logo.png" alt="language blog logo" width="50px" />
+         
         </Link>
+
         <Link href="/" className="logo">
           <Text fontSize="2xl" color="primary.main">
-            Follow Your Heart English
+            Langly
           </Text>
         </Link>
         {/* {isTabletOrMobile && (
@@ -68,81 +50,15 @@ export default function Navbar() {
         )} */}
         {/* {isDesktopOrLaptop && ( */}
         <div className="mainLinksContainer">
-          <Link href="/listening" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Listening
-            </Text>
-          </Link>
-          <Link href="/speaking" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Speaking
-            </Text>
-          </Link>
-          <Link href="/grammar" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Grammar
-            </Text>
-          </Link>
-          <Link href="/vocab" className="links">
-            <Text fontSize="xl" color="secondary.dark">
-              Vocabulary
-            </Text>
-          </Link>
-          <Menu isLazy>
-            <MenuButton className="links">
-              <Text fontSize="xl" color="secondary.dark">
-                Resources
-              </Text>
-            </MenuButton>
-            <MenuList>
-              <MenuItem>
-                <Link href="/resources">
-                  <Text fontSize="lg">Resources</Text>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/resources/pdf">
-                  <Text fontSize="lg">Cheat Sheets</Text>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/resources/games">
-                  <Text fontSize="lg">English Games</Text>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/resources/music">
-                  <Text fontSize="lg">Learn with Music</Text>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/resources/youtube">
-                  <Text fontSize="lg">FYH English YouTube Videos</Text>
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="/resources/podcast">
-                  <Text fontSize="lg">FYH English Podcast</Text>
-                </Link>
-              </MenuItem>
-            </MenuList>
-          </Menu>
           <Link href="/articles" className="links">
             <Text fontSize="xl" color="secondary.dark">
-              Blog
+              Articles
             </Text>
           </Link>
-          <Link href="/login" className="links">
-            <Text fontSize="xl">Log In</Text>
-          </Link>
-          <Link href="/signup" className="links">
-            <Text fontSize="xl">Sign Up</Text>
-          </Link>
-          <Link href="/account" className="links">
-            <BsPersonCircle className="search" size={25} color="primary.main" />
-          </Link>
-          <Link href="/search" className="links">
-            <Search2Icon className="search" boxSize={5} color="primary.main" />
+          <Link href="/contact" className="links">
+            <Text fontSize="xl" color="secondary.dark">
+              Contact
+            </Text>
           </Link>
         </div>
         {/* )} */}

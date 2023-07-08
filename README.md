@@ -1,2 +1,2 @@
-# Follow Your Heart English Blog
+## Language Blog
 

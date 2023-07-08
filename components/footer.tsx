@@ -20,12 +20,12 @@ export default function Footer() {
           <Link href="https://www.youtube.com/channel/UCG63H0-Bonh51PvCDBmdyuw" className="footerLinks"><FaYoutube className="search" size={35}  color="primary.main" /></Link>
           <Link href="https://www.buymeacoffee.com/fyhenglish" className="footerLinks"><SiBuymeacoffee className="search" size={35}  color="primary.main" /></Link>
           </Container>
-          <Container className="flexboxContainer" maxW="2xl">
+          {/* <Container className="flexboxContainer" maxW="2xl">
           <Link href="/contact" className="footerLinks"><Text fontSize='lg' className="footerText">Contact</Text></Link>
           <Link href="/newsletter" className="footerLinks"><Text fontSize='lg' className="footerText">Newsletter</Text></Link>
           <Link href="/privacy-policy" className="footerLinks"><Text fontSize='lg' className="footerText">Privacy Policy</Text></Link>
           <Link href="/terms-of-service" className="footerLinks"><Text fontSize='lg' className="footerText">Terms of Service</Text></Link>
-      </Container>
+      </Container> */}
     </Box>
   );
 }

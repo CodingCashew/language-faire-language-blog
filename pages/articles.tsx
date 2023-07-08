@@ -9,8 +9,6 @@ import {
   Link,
   Flex,
 } from "@chakra-ui/react";
-import Sidebar from "../components/sidebar";
-import { blogLinks } from "../components/sidebarLinks";
 
 interface Article {
   _id: number;
@@ -25,7 +23,6 @@ export default function Articles({ articles }: any) {
   return (
     <Container maxW="7xl" centerContent pt={8}>
       <Flex>
-        <Sidebar links={blogLinks} section={"articles"} maxW="sm"/>
         <Flex flexDirection="column" maxW="4xl">
           <Text fontSize="2xl" color="primary.dark">
             {"My Lovely Articles:"}
@@ -35,7 +32,7 @@ export default function Articles({ articles }: any) {
             <Card mt={2} key={article._id}>
               <CardBody>
                 <Image
-                  src="/blogArticleThumbnail.avif"
+                  src="assets/blogArticleThumbnail.avif"
                   alt="language blog logo"
                   w="75%"
                 />

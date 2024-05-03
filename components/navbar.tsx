@@ -1,13 +1,18 @@
 import React from "react";
-import { Box, Text, Image } from "@chakra-ui/react";
+import { Box, Text, Image, Flex } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
     <Box bg="gray.50" minH={20}>
-      <div className="flexboxContainer">
+      <Flex className="flexboxContainer">
         <Link href="/" className="landingPage">
-          <Image src="../logo.png" alt="language blog logo" width="50px" />
+          <Image
+            src="../logo.png"
+            alt="language blog logo"
+            width="50px"
+            className="logo"
+          />
         </Link>
         <Link href="/" className="logo">
           <Text fontSize="2xl" color="primary.main">
@@ -21,7 +26,7 @@ export default function Navbar() {
             </Text>
           </Link>
         </div>
-      </div>
+      </Flex>
     </Box>
   );
 }

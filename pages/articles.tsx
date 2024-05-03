@@ -9,6 +9,7 @@ import {
   Link,
   Flex,
 } from "@chakra-ui/react";
+import Head from "next/head";
 
 interface Article {
   _id: number;
@@ -22,10 +23,14 @@ interface Article {
 export default function Articles({ articles }: any) {
   return (
     <Container maxW="7xl" centerContent pt={8}>
+      <Head>
+        <title>Articles</title>
+        <link rel="icon" href="../logo.png" sizes="any" />
+      </Head>
       <Flex>
         <Flex flexDirection="column" maxW="4xl">
           <Text fontSize="2xl" color="primary.dark">
-            {"My Lovely Articles:"}
+            Newest Articles
           </Text>
 
           {articles.map((article: Article) => (

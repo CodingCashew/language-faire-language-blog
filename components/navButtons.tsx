@@ -19,7 +19,7 @@ export default function NavButtons(props: any) {
   let previousExerciseNumber: number = currentExerciseNumber - 1;
 
   return (
-    <Flex justify="center" mt={5} gap={5}>
+    <Flex justify="space-around" mt={5} gap={5}>
       {hasPrevious && (
         <Button value="previous" backgroundColor="secondary.dark" color="white">
           <Link href={`/${section}/${previousExerciseNumber}`}>

@@ -23,6 +23,7 @@ import { useState } from "react";
 import NavButtons from "../../components/navButtons";
 import Sidebar from "../../components/sidebar";
 import { blogLinks } from "../../components/sidebarLinks";
+import Head from "next/head"
 
 export const getServerSideProps = async (context) => {
   const res = await fetch("http://localhost:3000/api/articles/", {
@@ -130,8 +131,12 @@ export default function Article({ article, numOfArticles }) {
 
   return (
     <Container maxW="6xl" minH="sm" pt={5}>
-      <Flex>
-        <Sidebar links={blogLinks} section={"articles"} />
+      <Head>
+        <title>{article.title}</title>
+        <link rel="icon" href="../logo.png" sizes="any" />
+      </Head>
+      <Flex justify="center">
+        {/* <Sidebar links={blogLinks} section={"articles"} /> */}
         <Flex maxW="3xl" flexDirection="column">
           <Card key={article.id}>
             <CardHeader>
@@ -154,10 +159,10 @@ export default function Article({ article, numOfArticles }) {
                 {numOfLikes > 0 &&
                   `${numOfLikes}${numOfLikes > 1 ? " Likes" : " Like"}`}
               </Text>
-              <Text alignSelf="flex-end" pt={3} pr={6}>
+              {/* <Text alignSelf="flex-end" pt={3} pr={6}>
                 {numOfShares > 0 &&
                   `${numOfShares}${numOfShares > 1 ? " Shares" : " Share"}`}
-              </Text>
+              </Text> */}
             </Flex>
             <CardFooter
               flexWrap="wrap"
@@ -175,16 +180,16 @@ export default function Article({ article, numOfArticles }) {
                 Comment
                 <AiOutlineComment pl={6} />
               </Button>
-              <Button flex="1" variant="ghost" m={3} onClick={handleShare}>
+              {/* <Button flex="1" variant="ghost" m={3} onClick={handleShare}>
                 Share
                 <AiOutlineShareAlt pl={6} />
-              </Button>
+              </Button> */}
               <Divider />
               {!comments.length && !isCommenting && (
                 <Text>Be the first to comment.</Text>
               )}
               {isCommenting && (
-                <Container>
+                <Flex direction="column" gap="3" w="100%" p={3}>
                   <Input
                     placeholder="Name"
                     onChange={handleChange}
@@ -207,7 +212,7 @@ export default function Article({ article, numOfArticles }) {
                   >
                     Add Comment
                   </Button>
-                </Container>
+                </Flex>
               )}
               <Container>
                 {comments.length > 0 &&

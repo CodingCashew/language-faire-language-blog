@@ -1,9 +1,13 @@
-import { Box, Button, Container, Text, Image, Link, Flex } from "@chakra-ui/react";
-import { ArrowRightIcon } from "@chakra-ui/icons";
+import { Box, Container, Flex, Image, Text } from "@chakra-ui/react";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <Flex direction="column" w="100%">
+      <Head>
+        <title>Home</title>
+        <link rel="icon" href="../logo.png" sizes="any" />
+      </Head>
       <Box
         w="100%"
         h="100%"
@@ -98,7 +102,6 @@ export default function Home() {
         h="100%"
         bgGradient="linear(to-r, primary.light, tertiary.light)"
       >
-
         {/* <Container
           maxW="3xl"
           minHeight="sm"

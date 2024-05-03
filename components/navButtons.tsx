@@ -1,6 +1,5 @@
-import React from "react";
-import { Link, Button, Flex } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Button, Flex, Link } from "@chakra-ui/react";
 import { NextRouter, useRouter } from "next/router";
 
 export default function NavButtons(props: any) {

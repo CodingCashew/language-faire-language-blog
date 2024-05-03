@@ -1,13 +1,13 @@
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
-  Container,
-  Text,
   Button,
   Card,
   CardBody,
+  Container,
+  Flex,
   Image,
   Link,
-  Flex,
+  Text,
 } from "@chakra-ui/react";
 import Head from "next/head";
 

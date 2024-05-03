@@ -1,29 +1,22 @@
 import {
-  Container,
-  Text,
+  Button,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
-  Button,
-  Heading,
-  Textarea,
-  Input,
+  CardHeader,
+  Container,
   Divider,
-  Image,
   Flex,
+  Heading,
+  Image,
+  Input,
+  Text,
+  Textarea,
 } from "@chakra-ui/react";
-import {
-  AiOutlineLike,
-  AiFillLike,
-  AiOutlineComment,
-  AiOutlineShareAlt,
-} from "react-icons/ai";
+import Head from "next/head";
 import { useState } from "react";
+import { AiFillLike, AiOutlineComment, AiOutlineLike } from "react-icons/ai";
 import NavButtons from "../../components/navButtons";
-import Sidebar from "../../components/sidebar";
-import { blogLinks } from "../../components/sidebarLinks";
-import Head from "next/head"
 
 export const getServerSideProps = async (context) => {
   const res = await fetch("http://localhost:3000/api/articles/", {

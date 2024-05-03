@@ -1,9 +1,9 @@
-import { Box, Button, Container, Text, Image, Link } from "@chakra-ui/react";
+import { Box, Button, Container, Text, Image, Link, Flex } from "@chakra-ui/react";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 
 export default function Home() {
   return (
-    <div>
+    <Flex direction="column" w="100%">
       <Box
         w="100%"
         h="100%"
@@ -122,6 +122,6 @@ export default function Home() {
           </Button>
         </Container> */}
       </Box>
-    </div>
+    </Flex>
   );
 }

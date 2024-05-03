@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <Box bg="gray.50" minH={20}>
+    <Box bg="gray.50" minH={{base: 10, md: 15}}>
       <Flex className="flexboxContainer">
         <Link href="/" className="landingPage">
           <Image
@@ -14,7 +14,7 @@ export default function Navbar() {
           />
         </Link>
         <Link href="/" className="logo">
-          <Text fontSize="2xl" color="primary.main">
+          <Text fontSize="2xl" color="primary.main" display={{base: "none", sm: "block"}}>
             Langly
           </Text>
         </Link>

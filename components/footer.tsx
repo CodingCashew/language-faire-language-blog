@@ -1,4 +1,4 @@
-import { Box, Container, Link } from "@chakra-ui/react";
+import { Box, Flex, Link } from "@chakra-ui/react";
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -9,15 +9,8 @@ import { SiBuymeacoffee } from "react-icons/si";
 
 export default function Footer() {
   return (
-    // <Box bg='gray.50' >
-    //   <div className="footer">
-    //     <Link href="/contact">
-    //       <Text>Contact Us</Text>
-    //     </Link>
-    //   </div>
-    // </Box>
     <Box bg="gray.50" className="footer">
-      <Container className="flexboxContainer" maxW="2xl">
+      <Flex className="flexboxContainer" justify="center">
         <Link href="https://twitter.com/FYHEnglish" className="footerLinks">
           <FaTwitter className="search" size={35} color="primary.main" />
         </Link>
@@ -49,7 +42,7 @@ export default function Footer() {
         >
           <SiBuymeacoffee className="search" size={35} color="primary.main" />
         </Link>
-      </Container>
+      </Flex>
       {/* <Container className="flexboxContainer" maxW="2xl">
           <Link href="/contact" className="footerLinks"><Text fontSize='lg' className="footerText">Contact</Text></Link>
           <Link href="/newsletter" className="footerLinks"><Text fontSize='lg' className="footerText">Newsletter</Text></Link>

@@ -100,7 +100,7 @@ export default function Home() {
       <Box
         w="100%"
         h="100%"
-        bgGradient="linear(to-r, primary.light, tertiary.light)"
+        bgGradient="linear(to-br, primary.light, tertiary.light)"
       >
         {/* <Container
           maxW="3xl"

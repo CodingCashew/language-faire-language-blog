@@ -22,31 +22,38 @@ interface Article {
 
 export default function Articles({ articles }: any) {
   return (
-    <Container maxW="7xl" centerContent pt={8}>
+    <Container
+      maxW="100%"
+      centerContent
+      bgGradient="linear(to-bl, secondary.dark, tertiary.main)"
+    >
       <Head>
         <title>Articles</title>
         <link rel="icon" href="../logo.png" sizes="any" />
       </Head>
-      <Flex>
+      <Flex my={10}>
         <Flex flexDirection="column" maxW="4xl">
-          <Text fontSize="2xl" color="primary.dark">
+          <Text fontSize="2xl" alignSelf="center" color="white" mb={3}>
             Newest Articles
           </Text>
 
           {articles.map((article: Article) => (
-            <Card mt={2} key={article._id}>
+            <Card my={3} key={article._id} maxH="sm" maxW="2xl">
               <CardBody>
                 <Image
                   src="assets/blogArticleThumbnail.avif"
                   alt="language blog logo"
-                  w="75%"
+                  maxW="65%"
+                  mx="auto"
                 />
                 <Link href={`/articles/${article.id}`}>
-                  <Text fontSize="xl">{article.title}</Text>
+                  <Text fontSize="xl" mt={3}>
+                    {article.title}
+                  </Text>
                 </Link>
-                <Text fontSize="md">{article.content.slice(0, 100)}...</Text>
+                <Text fontSize="md">{article.content.slice(0, 125)}...</Text>
                 <Link href={`/articles/${article.id}`}>
-                  <Button bgColor="secondary.dark" m="1rem" color="white">
+                  <Button bgColor="secondary.dark" my={3} color="white">
                     Continue Reading
                     <ChevronRightIcon />
                   </Button>

@@ -97,11 +97,11 @@ export default function Home() {
           />
         </Container>
       </Box>
-      <Box
+      {/* <Box
         w="100%"
         h="100%"
         bgGradient="linear(to-br, primary.light, tertiary.light)"
-      >
+      > */}
         {/* <Container
           maxW="3xl"
           minHeight="sm"
@@ -124,7 +124,7 @@ export default function Home() {
             </Link>
           </Button>
         </Container> */}
-      </Box>
+      {/* </Box> */}
     </Flex>
   );
 }

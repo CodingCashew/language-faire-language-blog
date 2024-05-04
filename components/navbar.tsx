@@ -20,7 +20,7 @@ export default function Navbar() {
         </Link>
         <div className="mainLinksContainer">
           <Link href="/articles" className="links">
-            <Text fontSize="xl" color="secondary.dark">
+            <Text fontSize="xl" color="tertiary.dark">
               Articles
             </Text>
           </Link>

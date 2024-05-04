@@ -18,23 +18,24 @@ export default function NavButtons(props: any) {
   let previousExerciseNumber: number = currentExerciseNumber - 1;
 
   return (
-    <Flex justify="space-around" mt={5} gap={5}>
-      {hasPrevious && (
-        <Button value="previous" backgroundColor="secondary.dark" color="white">
-          <Link href={`/${section}/${previousExerciseNumber}`}>
-            <ChevronLeftIcon />
-            Previous
-          </Link>
-        </Button>
-      )}
-      {hasNext && (
-        <Button value="next" backgroundColor="primary.dark" color="white">
-          <Link href={`/${section}/${nextExerciseNumber}`}>
-            Next
-            <ChevronRightIcon />
-          </Link>
-        </Button>
-      )}
+    <Flex justify="space-around" my={5} gap={5}>
+      <Button value="previous" backgroundColor="primary.dark" color="white" isDisabled={!hasPrevious}>
+        <Link href={`/${section}/${previousExerciseNumber}`}>
+          <ChevronLeftIcon />
+          Previous
+        </Link>
+      </Button>
+      <Button
+        value="next"
+        backgroundColor="primary.dark"
+        color="white"
+        isDisabled={!hasNext}
+      >
+        <Link href={`/${section}/${nextExerciseNumber}`}>
+          Next
+          <ChevronRightIcon />
+        </Link>
+      </Button>
     </Flex>
   );
 }

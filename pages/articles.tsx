@@ -18,6 +18,7 @@ interface Article {
   id: string;
   likes: number;
   comments: [];
+  imagePath: string;
 }
 
 export default function Articles({ articles }: any) {
@@ -38,13 +39,13 @@ export default function Articles({ articles }: any) {
           </Text>
 
           {articles.map((article: Article) => (
-            <Card my={3} key={article._id} maxH="sm" maxW="2xl">
+            <Card my={3} key={article._id} maxH="md" maxW="2xl">
               <CardBody>
                 <Image
-                  src="assets/blogArticleThumbnail.avif"
+                  src={article.imagePath}
                   alt="language blog logo"
-                  maxW="65%"
-                  mx="auto"
+                  maxW="50%"
+                  // mx="auto"
                 />
                 <Link href={`/articles/${article.id}`}>
                   <Text fontSize="xl" mt={3}>

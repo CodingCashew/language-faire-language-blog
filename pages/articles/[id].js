@@ -123,7 +123,7 @@ export default function Article({ article, numOfArticles }) {
   };
 
   return (
-    <Container maxW="6xl" minH="sm" pt={5}>
+    <Flex direction="column" minH="sm" pt={5} bgGradient="linear(to-br, primary.light, secondary.main)">
       <Head>
         <title>{article.title}</title>
         <link rel="icon" href="../logo.png" sizes="any" />
@@ -133,16 +133,18 @@ export default function Article({ article, numOfArticles }) {
         <Flex maxW="3xl" flexDirection="column">
           <Card key={article.id}>
             <CardHeader>
-              <Heading size="md" p={5}>
+              <Heading size="md" p={5} align="center" color="tertiary.dark">
                 {article.title}
               </Heading>
             </CardHeader>
             <Image
               objectFit="cover"
               minW="sm"
+              maxW="xl"
               alignSelf="center"
-              src="https://picsum.photos/300/200"
-              alt="Chakra UI"
+              src={article.imagePath}
+              // src="/assets/paradigm-visuals-_d2YajYba98-unsplash.jpg"
+              alt={article.title}
             />
             <CardBody>
               <Text p={7}>{article.content}</Text>
@@ -170,8 +172,8 @@ export default function Article({ article, numOfArticles }) {
                 {liked && <AiFillLike pl={6} />}
               </Button>
               <Button flex="1" variant="ghost" m={3} onClick={handleCommenting}>
-                Comment
-                <AiOutlineComment pl={6} />
+                Comment{" "}
+                <AiOutlineComment ml={1} />
               </Button>
               {/* <Button flex="1" variant="ghost" m={3} onClick={handleShare}>
                 Share
@@ -179,7 +181,7 @@ export default function Article({ article, numOfArticles }) {
               </Button> */}
               <Divider />
               {!comments.length && !isCommenting && (
-                <Text>Be the first to comment.</Text>
+                <Text m={8} color="tertiary.dark">Be the first to comment!</Text>
               )}
               {isCommenting && (
                 <Flex direction="column" gap="3" w="100%" p={3}>
@@ -228,6 +230,6 @@ export default function Article({ article, numOfArticles }) {
         </Flex>
       </Flex>
       <NavButtons numOfExercises={numOfArticles} section={section} />
-    </Container>
+    </Flex>
   );
 }

@@ -197,7 +197,7 @@ export default function Article({ article, numOfArticles }: {article: ArticleTyp
                     placeholder="Name"
                     onChange={handleChange}
                     value={currentComment.commenter}
-                    name="username"
+                    name="commenter"
                     required
                   />
                   <Textarea

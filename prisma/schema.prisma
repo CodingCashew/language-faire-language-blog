@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type ListeningQuestions {
+  answer   String
+  /// Multiple data types found: String: 33.3%, Int: 66.7% out of 6 sampled entries
+  id       Json
+  options  String[]
+  question String
+}
+
+type SpeakingPhrases {
+  id   String
+  path String
+  text String
+}
+
+type VocabCards {
+  alt       String
+  audioPath String
+  back      String
+  front     String
+  id        Int
+  vocabImg  String
+}
+
+model Articles {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  comments     Comment[]
+  content      String
+  date_written DateTime @db.Date
+  id_          String   @map("id")
+  imagePath    String
+  likes        Int
+  shares       Int
+  tags         String[]
+  title        String
+}
+
+model Comment {
+  commenter: String
+  date_written DateTime @db.Date
+  content: String
+}
+
+model Grammar {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model Listening {
+  id        String               @id @default(auto()) @map("_id") @db.ObjectId
+  audioPath String
+  category  String
+  id_       String               @map("id")
+  imgPath   String
+  questions ListeningQuestions[]
+  script    String
+  title     String
+}
+
+model Newsletter {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  email     String
+  firstName String
+}
+
+model Speaking {
+  id       String            @id @default(auto()) @map("_id") @db.ObjectId
+  category String
+  id_      String            @map("id")
+  imgPath  String
+  phrases  SpeakingPhrases[]
+  title    String
+}
+
+model Users {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  email    String
+  name     String?
+  password String
+  username String?
+}
+
+model Vocab {
+  id       String       @id @default(auto()) @map("_id") @db.ObjectId
+  cards    VocabCards[]
+  category String
+  id_      String       @map("id")
+  imgPath  String
+  title    String
+}

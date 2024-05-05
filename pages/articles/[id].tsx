@@ -17,8 +17,11 @@ import Head from "next/head";
 import { useState } from "react";
 import { AiFillLike, AiOutlineComment, AiOutlineLike } from "react-icons/ai";
 import NavButtons from "../../components/navButtons";
+import ReactHtmlParser from "react-html-parser";
+import { Article as ArticleType } from '../../shared/interfaces/article.interface.js';
+import { Comment } from '../../shared/interfaces/comment.interface.js';
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const res = await fetch("http://localhost:3000/api/articles/", {
     method: "GET",
     headers: {
@@ -28,15 +31,16 @@ export const getServerSideProps = async (context) => {
 
   const data = await res.json();
   const numOfArticles = data.length;
-  let article = data.filter((article) => article.id == context.query.id);
+  let article = data.filter((article:ArticleType) => article.id == context.query.id);
 
   article = article[0];
+  console.log(article.content.split("\n"));
   return {
     props: { article, numOfArticles },
   };
 };
 
-export default function Article({ article, numOfArticles }) {
+export default function Article({ article, numOfArticles }: {article: ArticleType, numOfArticles: number}) {
   const section = "articles";
   const [numOfLikes, setNumOfLikes] = useState(article.likes);
   const [numOfShares, setNumOfShares] = useState(article.shares);
@@ -80,21 +84,21 @@ export default function Article({ article, numOfArticles }) {
       },
     });
     const data = await res.json();
-    setNumOfShares(previousShareCount + 1);
+    setNumOfShares((previousShareCount || 0) + 1);
   };
 
-  const [comments, setComments] = useState(article.comments);
+  const [comments, setComments] = useState<Comment[]>(article.comments);
   const [isCommenting, setIsCommenting] = useState(false);
 
   const initialCommentValues = {
-    username: "",
+    commenter: "",
     content: "",
   };
   const handleCommenting = () => {
     isCommenting ? setIsCommenting(false) : setIsCommenting(true);
   };
   const [currentComment, setCurrentComment] = useState(initialCommentValues);
-  const handleChange = (e) => {
+  const handleChange = (e:any) => {
     const { name, value } = e.target;
     setCurrentComment({
       ...currentComment,
@@ -102,20 +106,19 @@ export default function Article({ article, numOfArticles }) {
     });
   };
 
-  const postComment = async (e) => {
+  const postComment = async (e:any) => {
     const res = await fetch("/api/comments", {
       method: "POST",
       body: JSON.stringify({
         content: currentComment.content,
         id: article.id,
-        name: currentComment.username,
+        name: currentComment.commenter,
         date: new Date().toDateString(),
       }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-    console.log("res: ", res);
     const data = await res.json();
     setComments([currentComment, ...comments]);
     setCurrentComment(initialCommentValues);
@@ -123,33 +126,37 @@ export default function Article({ article, numOfArticles }) {
   };
 
   return (
-    <Flex direction="column" minH="sm" pt={5} bgGradient="linear(to-br, primary.light, secondary.main)">
+    <Flex
+      direction="column"
+      minH="sm"
+      pt={5}
+      bgGradient="linear(to-br, primary.light, secondary.main)"
+    >
       <Head>
         <title>{article.title}</title>
         <link rel="icon" href="../logo.png" sizes="any" />
       </Head>
       <Flex justify="center">
         {/* <Sidebar links={blogLinks} section={"articles"} /> */}
-        <Flex maxW="3xl" flexDirection="column">
+        <Flex
+          flexDirection="column"
+          maxW={{ base: "95%", md: "80%", lg: "65%" }}
+        >
           <Card key={article.id}>
             <CardHeader>
-              <Heading size="md" p={5} align="center" color="tertiary.dark">
+              <Heading size="md" m={5} alignSelf="center" color="tertiary.dark">
                 {article.title}
               </Heading>
             </CardHeader>
             <Image
-              objectFit="cover"
-              minW="sm"
-              maxW="xl"
+              maxW={{ base: "sm", sm: "md", md: "lg", lg: "xl" }}
+              px={3}
               alignSelf="center"
               src={article.imagePath}
-              // src="/assets/paradigm-visuals-_d2YajYba98-unsplash.jpg"
               alt={article.title}
             />
-            <CardBody>
-              <Text p={7}>{article.content}</Text>
-            </CardBody>
-            <Flex flexDirection="column">
+            <CardBody m={5}>{ReactHtmlParser(article.content)}</CardBody>
+            <Flex flexDirection="column" >
               <Text alignSelf="flex-end" pr={6}>
                 {numOfLikes > 0 &&
                   `${numOfLikes}${numOfLikes > 1 ? " Likes" : " Like"}`}
@@ -168,12 +175,11 @@ export default function Article({ article, numOfArticles }) {
               }}
             >
               <Button flex="1" variant="ghost" m={3} onClick={handleLike}>
-                Like{!liked && <AiOutlineLike pl={6} />}
-                {liked && <AiFillLike pl={6} />}
+                Like{!liked && <AiOutlineLike />}
+                {liked && <AiFillLike />}
               </Button>
               <Button flex="1" variant="ghost" m={3} onClick={handleCommenting}>
-                Comment{" "}
-                <AiOutlineComment ml={1} />
+                Comment <AiOutlineComment />
               </Button>
               {/* <Button flex="1" variant="ghost" m={3} onClick={handleShare}>
                 Share
@@ -181,14 +187,16 @@ export default function Article({ article, numOfArticles }) {
               </Button> */}
               <Divider />
               {!comments.length && !isCommenting && (
-                <Text m={8} color="tertiary.dark">Be the first to comment!</Text>
+                <Text m={8} color="tertiary.dark">
+                  Be the first to comment!
+                </Text>
               )}
               {isCommenting && (
                 <Flex direction="column" gap="3" w="100%" p={3}>
                   <Input
                     placeholder="Name"
                     onChange={handleChange}
-                    value={currentComment.username}
+                    value={currentComment.commenter}
                     name="username"
                     required
                   />
@@ -200,25 +208,33 @@ export default function Article({ article, numOfArticles }) {
                     required
                   />
                   <Button
-                    backgroundColor="tertiary.dark"
+                    backgroundColor="secondary.dark"
                     color="white"
                     onClick={postComment}
                     mt={3}
                   >
                     Add Comment
                   </Button>
+                  <Button
+                    variant="ghost"
+                    maxW="sm"
+                    alignSelf="center"
+                    onClick={handleCommenting}
+                  >
+                    Cancel
+                  </Button>
                 </Flex>
               )}
               <Container>
                 {comments.length > 0 &&
-                  comments.map((comment, i) => (
+                  comments.map((comment:Comment, i:number) => (
                     <Flex key={i} direction="column" maxW="lg">
                       <Flex direction="row" justifyContent="space-between">
                         <Text pt={5} fontSize="sm" color="grey">
                           {comment.commenter}
                         </Text>
                         <Text pt={5} fontSize="sm" color="grey">
-                          {new Date(comment.date_written).toDateString()}
+                          {new Date(comment.date_written || Date.now()).toDateString()}
                         </Text>
                       </Flex>
                       <Text minW="3xl">{comment.content}</Text>

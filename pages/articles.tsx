@@ -10,23 +10,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Head from "next/head";
-
-interface Article {
-  _id: number;
-  title: string;
-  content: string;
-  id: string;
-  likes: number;
-  comments: [];
-  imagePath: string;
-}
+import { Article } from "../shared/interfaces/article.interface.js";
 
 export default function Articles({ articles }: any) {
   return (
     <Container
       maxW="100%"
       centerContent
-      bgGradient="linear(to-bl, secondary.dark, tertiary.main)"
+      bgGradient="linear(to-bl, primary.dark, tertiary.dark)"
     >
       <Head>
         <title>Articles</title>
@@ -38,21 +29,26 @@ export default function Articles({ articles }: any) {
             Newest Articles
           </Text>
 
-          {articles.map((article: Article) => (
+          {articles.sort((a:Article, b:Article) => Number(b.id) - Number(a.id)).map((article: Article) => (
             <Card my={3} key={article._id} maxH="md" maxW="2xl">
               <CardBody>
                 <Image
                   src={article.imagePath}
                   alt="language blog logo"
                   maxW="50%"
-                  // mx="auto"
                 />
                 <Link href={`/articles/${article.id}`}>
                   <Text fontSize="xl" mt={3}>
                     {article.title}
                   </Text>
                 </Link>
-                <Text fontSize="md">{article.content.slice(0, 125)}...</Text>
+                <Text fontSize="md">
+                  {article.content.slice(
+                    article.content.indexOf(">") + 1 || 0,
+                    130
+                  )}
+                  ...
+                </Text>
                 <Link href={`/articles/${article.id}`}>
                   <Button bgColor="secondary.dark" my={3} color="white">
                     Continue Reading

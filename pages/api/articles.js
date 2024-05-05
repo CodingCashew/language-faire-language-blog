@@ -9,7 +9,7 @@ const handler = async (req, res) => {
 
     res.json(articles);
   } catch (e) {
-    console.error(e);
+    console.error('error fetching articles: ', e);
   }
 };
 

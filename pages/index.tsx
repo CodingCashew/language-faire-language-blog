@@ -8,30 +8,34 @@ export default function Home() {
         <title>Home</title>
         <link rel="icon" href="../logo.png" sizes="any" />
       </Head>
-      <Box
+      <Flex
         w="100%"
         h="100%"
-        bgGradient="linear(to-tr, secondary.light, primary.main)"
+        bgGradient="linear(to-br, primary.main, secondary.light)"
       >
-        <Container
+        <Flex
           maxW="4xl"
           minHeight="md"
           color="white"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
+          justify="center"
+          align="center"
         >
           <Image
             borderRadius="5px"
-            boxSize="65%"
-            src="/assets/pradamas-gifarry-889Qh5HJj4I-unsplash.jpg"
+            maxW=""
+            maxH="sm"
+            src="/assets/jan-kopriva-SCEywLgwj2E-landscape.jpg"
             alt="learning languages"
           />
+
           <Text fontSize="3xl" textAlign={["left"]} marginLeft="1em">
-            Explore new languages!
+            Welcome to{" "}
+            <Text as="span" color="primary.dark">
+              Langfaring!
+            </Text>
           </Text>
-        </Container>
-      </Box>
+        </Flex>
+      </Flex>
       <Box w="100%" h="100%" bgColor="white">
         <Container
           maxW="4xl"
@@ -62,9 +66,9 @@ export default function Home() {
               alt="learning languages"
             />
             <Image
-              maxW="33%"
               borderRadius="5px"
-              src="/assets/jan-kopriva-SCEywLgwj2E-landscape.jpg"
+              boxSize="65%"
+              src="/assets/pradamas-gifarry-889Qh5HJj4I-unsplash.jpg"
               alt="learning languages"
             />
             <Image
@@ -97,34 +101,6 @@ export default function Home() {
           />
         </Container>
       </Box>
-      {/* <Box
-        w="100%"
-        h="100%"
-        bgGradient="linear(to-br, primary.light, tertiary.light)"
-      > */}
-        {/* <Container
-          maxW="3xl"
-          minHeight="sm"
-          color="white"
-          display="flex"
-          alignItems="center"
-        >
-          <Text fontSize="3xl" textAlign={["left", "center"]} paddingY="1rem">
-            Join Our Community of Passionate Languages Learners!
-          </Text>
-          <Button
-            bgColor="primary.dark"
-            color="white"
-            justifyContent="center"
-            paddingX="3em"
-            paddingY="1.35em"
-          >
-            <Link href="/signup">
-              <ArrowRightIcon marginRight=".5rem" /> Create a New Account
-            </Link>
-          </Button>
-        </Container> */}
-      {/* </Box> */}
     </Flex>
   );
 }

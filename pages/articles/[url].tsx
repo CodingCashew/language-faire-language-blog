@@ -22,7 +22,7 @@ import { Article as ArticleType } from '../../shared/interfaces/article.interfac
 import { Comment } from '../../shared/interfaces/comment.interface.js';
 
 export const getServerSideProps = async (context: any) => {
-  const res = await fetch("http://localhost:3000/api/articles/", {
+  const res = await fetch(`${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.langfaring.com'}/api/articles/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

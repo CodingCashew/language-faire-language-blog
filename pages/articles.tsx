@@ -65,7 +65,7 @@ export default function Articles({ articles }: any) {
 }
 
 export async function getServerSideProps(context: any) {
-  let res = await fetch("http://localhost:3000/api/articles", {
+  let res = await fetch(`${process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.langfaring.com'}/api/articles/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

@@ -14,13 +14,13 @@ export default function Navbar() {
           />
         </Link>
         <Link href="/" className="logo">
-          <Text fontSize="2xl" color="primary.main" display={{base: "none", sm: "block"}}>
-            Langly
+          <Text fontSize="2xl" color="primary.dark" display={{base: "none", sm: "block"}}>
+            Langfaring
           </Text>
         </Link>
         <div className="mainLinksContainer">
           <Link href="/articles" className="links">
-            <Text fontSize="xl" color="tertiary.dark">
+            <Text fontSize="xl" color="secondary.dark">
               Articles
             </Text>
           </Link>

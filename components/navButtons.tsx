@@ -1,14 +1,18 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Button, Flex, Link } from "@chakra-ui/react";
 import { NextRouter, useRouter } from "next/router";
+import { Article } from "../shared/interfaces/article.interface";
 
 export default function NavButtons(props: any) {
   const {
     numOfExercises,
     section,
-  }: { numOfExercises: number; section: string } = props;
+    id,
+    articles
+  }: { numOfExercises: number; section: string; id: string; articles: Article[] } = props;
   const router: NextRouter = useRouter();
-  let currentExerciseNumber: number = Number(router.query.id);
+  // let currentExerciseNumber: number = Number(router.query.id);
+  let currentExerciseNumber: number = Number(id);
   let hasPrevious: boolean =
     1 < currentExerciseNumber && currentExerciseNumber <= numOfExercises;
   const hasNext: boolean =
@@ -17,10 +21,13 @@ export default function NavButtons(props: any) {
   let nextExerciseNumber: number = currentExerciseNumber + 1;
   let previousExerciseNumber: number = currentExerciseNumber - 1;
 
+  let previousArticle: Article | undefined  = articles.find((article: Article) => Number(article.id) === previousExerciseNumber);
+  let nextArticle: Article | undefined = articles.find((article: Article) => Number(article.id) === nextExerciseNumber);
+
   return (
     <Flex justify="space-around" my={5} gap={5}>
       <Button value="previous" backgroundColor="primary.dark" color="white" isDisabled={!hasPrevious}>
-        <Link href={`/${section}/${previousExerciseNumber}`}>
+        <Link href={`/${section}/${previousArticle?.url || ""}`}>
           <ChevronLeftIcon />
           Previous
         </Link>
@@ -31,7 +38,7 @@ export default function NavButtons(props: any) {
         color="white"
         isDisabled={!hasNext}
       >
-        <Link href={`/${section}/${nextExerciseNumber}`}>
+        <Link href={`/${section}/${nextArticle?.url || ""}`}>
           Next
           <ChevronRightIcon />
         </Link>

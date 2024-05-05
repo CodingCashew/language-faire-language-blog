@@ -29,15 +29,15 @@ export default function Articles({ articles }: any) {
             Newest Articles
           </Text>
 
-          {articles.sort((a:Article, b:Article) => Number(b.id) - Number(a.id)).map((article: Article) => (
-            <Card my={3} key={article._id} maxH="md" maxW="2xl">
+          {articles.sort((a:Article, b:Article) => Number(a.date_written) + Number(b.date_written)).map((article: Article) => (
+            <Card my={3} key={article.url} maxH="md" maxW="2xl">
               <CardBody>
                 <Image
                   src={article.imagePath}
                   alt="language blog logo"
                   maxW="50%"
                 />
-                <Link href={`/articles/${article.id}`}>
+                <Link href={`/articles/${article.url}`}>
                   <Text fontSize="xl" mt={3}>
                     {article.title}
                   </Text>
@@ -49,7 +49,7 @@ export default function Articles({ articles }: any) {
                   )}
                   ...
                 </Text>
-                <Link href={`/articles/${article.id}`}>
+                <Link href={`/articles/${article.url}`}>
                   <Button bgColor="secondary.dark" my={3} color="white">
                     Continue Reading
                     <ChevronRightIcon />

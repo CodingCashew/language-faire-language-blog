@@ -31,22 +31,17 @@ type VocabCards {
 }
 
 model Articles {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  comments     Comment[]
+  id_           String   @id @default(auto()) @map("_id") @db.ObjectId
+  comments     Json
   content      String
   date_written DateTime @db.Date
-  id_          String   @map("id")
+  id          String
   imagePath    String
   likes        Int
   shares       Int
   tags         String[]
   title        String
-}
-
-model Comment {
-  commenter: String
-  date_written DateTime @db.Date
-  content: String
+  url          String
 }
 
 model Grammar {

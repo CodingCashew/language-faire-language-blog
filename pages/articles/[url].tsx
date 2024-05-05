@@ -31,16 +31,16 @@ export const getServerSideProps = async (context: any) => {
 
   const data = await res.json();
   const numOfArticles = data.length;
-  let article = data.filter((article:ArticleType) => article.id == context.query.id);
+  let article = data.filter((article:ArticleType) => article.url == context.query.url);
 
   article = article[0];
-  console.log(article.content.split("\n"));
+
   return {
-    props: { article, numOfArticles },
+    props: { article, numOfArticles, articles: data},
   };
 };
 
-export default function Article({ article, numOfArticles }: {article: ArticleType, numOfArticles: number}) {
+export default function Article({ article, numOfArticles, articles }: {article: ArticleType, numOfArticles: number, articles: ArticleType[]}) {
   const section = "articles";
   const [numOfLikes, setNumOfLikes] = useState(article.likes);
   const [numOfShares, setNumOfShares] = useState(article.shares);
@@ -245,7 +245,7 @@ export default function Article({ article, numOfArticles }: {article: ArticleTyp
           </Card>
         </Flex>
       </Flex>
-      <NavButtons numOfExercises={numOfArticles} section={section} />
+      <NavButtons numOfExercises={numOfArticles} section={section} id={article.id} articles={articles}/>
     </Flex>
   );
 }

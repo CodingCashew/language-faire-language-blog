@@ -6,7 +6,9 @@ export interface Article {
   content: string;
   id: string;
   likes: number;
+  date_written: Date;
   comments: Comment[];
   shares?: number;
   imagePath: string;
+  url: string;
 }

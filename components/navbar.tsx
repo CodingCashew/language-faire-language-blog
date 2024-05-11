@@ -1,9 +1,9 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <Box bg="gray.50" minH={{base: 10, md: 15}}>
+    <Box bg="gray.50" minH={{ base: 10, md: 15 }}>
       <Flex className="flexboxContainer">
         <Link href="/" className="landingPage">
           <Image
@@ -14,15 +14,19 @@ export default function Navbar() {
           />
         </Link>
         <Link href="/" className="logo">
-          <Text fontSize="2xl" color="primary.dark" display={{base: "none", sm: "block"}}>
+          <Text
+            fontSize="2xl"
+            color="primary.dark"
+            display={{ base: "none", sm: "block" }}
+          >
             Langfaring
           </Text>
         </Link>
         <div className="mainLinksContainer">
           <Link href="/articles" className="links">
-            <Text fontSize="xl" color="secondary.dark">
+            <Button fontSize="xl" color="secondary.dark" variant="link">
               Articles
-            </Text>
+            </Button>
           </Link>
         </div>
       </Flex>

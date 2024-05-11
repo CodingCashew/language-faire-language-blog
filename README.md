@@ -1,6 +1,6 @@
-# Language Blog
+# Langfaring
 
-Welcome to our Language Blog, where we dive deep into the fascinating world of languages, language learning, and the rich tapestry of cultures they embody. Our platform is designed to ignite curiosity, foster learning, and spark meaningful conversations about the beauty and diversity of human communication.
+Welcome to Langfaring, where we dive deep into the fascinating world of languages, language learning, and the rich tapestry of cultures they embody. Our platform is designed to ignite curiosity, foster learning, and spark meaningful conversations about the beauty and diversity of human communication.
 
 ## Features
 
@@ -14,7 +14,7 @@ Interact with our content through likes and comments, fostering a vibrant commun
 Our platform is powered by React and Next.js, ensuring a smooth and intuitive user experience. Plus, our use of a NoSQL database enables efficient storage and retrieval of articles, likes, and comments, ensuring that your browsing experience is both seamless and dynamic.
 
 ## Contributing
-We welcome contributions from fellow language enthusiasts! Whether you have a passion for writing about languages, expertise in React and Next.js development, or insights into optimizing our database structure, we'd love to hear from you. 
+We welcome contributions from fellow language enthusiasts! Whether you have a passion for writing about languages, expertise in React and Next.js development, or insights into optimizing our database structure, we'd love to hear from you.
 
 ## About Us
 We're a team of language enthusiasts dedicated to promoting linguistic diversity and fostering cross-cultural understanding through our engaging content.

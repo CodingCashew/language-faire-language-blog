@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Flex direction="column" w="100%">
       <Head>
-        <title>Home</title>
+        <title>Langfaring</title>
         <link rel="icon" href="../logo.png" sizes="any" />
       </Head>
       <Flex

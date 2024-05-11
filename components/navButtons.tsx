@@ -8,8 +8,13 @@ export default function NavButtons(props: any) {
     numOfExercises,
     section,
     id,
-    articles
-  }: { numOfExercises: number; section: string; id: string; articles: Article[] } = props;
+    articles,
+  }: {
+    numOfExercises: number;
+    section: string;
+    id: string;
+    articles: Article[];
+  } = props;
   const router: NextRouter = useRouter();
   // let currentExerciseNumber: number = Number(router.query.id);
   let currentExerciseNumber: number = Number(id);
@@ -21,28 +26,37 @@ export default function NavButtons(props: any) {
   let nextExerciseNumber: number = currentExerciseNumber + 1;
   let previousExerciseNumber: number = currentExerciseNumber - 1;
 
-  let previousArticle: Article | undefined  = articles.find((article: Article) => Number(article.id) === previousExerciseNumber);
-  let nextArticle: Article | undefined = articles.find((article: Article) => Number(article.id) === nextExerciseNumber);
+  let previousArticle: Article | undefined = articles.find(
+    (article: Article) => Number(article.id) === previousExerciseNumber
+  );
+  let nextArticle: Article | undefined = articles.find(
+    (article: Article) => Number(article.id) === nextExerciseNumber
+  );
 
   return (
     <Flex justify="space-around" my={5} gap={5}>
-      <Button value="previous" backgroundColor="primary.dark" color="white" isDisabled={!hasPrevious}>
-        <Link href={`/${section}/${previousArticle?.url || ""}`}>
+      <Link href={`/${section}/${previousArticle?.url || ""}`}>
+        <Button
+          value="previous"
+          backgroundColor="primary.dark"
+          color="white"
+          isDisabled={!hasPrevious}
+        >
           <ChevronLeftIcon />
           Previous
-        </Link>
-      </Button>
-      <Button
-        value="next"
-        backgroundColor="primary.dark"
-        color="white"
-        isDisabled={!hasNext}
-      >
-        <Link href={`/${section}/${nextArticle?.url || ""}`}>
+        </Button>
+      </Link>
+      <Link href={`/${section}/${nextArticle?.url || ""}`}>
+        <Button
+          value="next"
+          backgroundColor="primary.dark"
+          color="white"
+          isDisabled={!hasNext}
+        >
           Next
           <ChevronRightIcon />
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Flex>
   );
 }

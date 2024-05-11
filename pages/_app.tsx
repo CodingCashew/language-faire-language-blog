@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import "../styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <Navbar />
       <Component {...pageProps} />
+      <Analytics />
       <Footer />
     </ChakraProvider>
   );

@@ -19,7 +19,7 @@ export default function Navbar() {
             color="primary.dark"
             display={{ base: "none", sm: "block" }}
           >
-            Langfaring
+            LanguageFaire
           </Text>
         </Link>
         <div className="mainLinksContainer">

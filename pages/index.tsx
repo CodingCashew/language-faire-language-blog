@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <Flex direction="column" w="100%">
       <Head>
-        <title>Langfaring</title>
+        <title>LanguageFaire</title>
         <link rel="icon" href="../logo.png" sizes="any" />
       </Head>
       <Flex
@@ -36,7 +36,7 @@ export default function Home() {
           <Text fontSize="3xl">
             Welcome to{" "}
             <Text as="span" color="primary.dark">
-              Langfaring!
+              LanguageFaire!
             </Text>
           </Text>
           <Text fontSize="xl" maxW="2xl" marginY="1em">
@@ -111,7 +111,7 @@ export default function Home() {
             alt="learning languages"
           />
           <Text fontSize="xl" color="white" align="center">
-            At Langfaring, we understand the challenges and excitement of
+            At LanguageFaire, we understand the challenges and excitement of
             embarking on a language journey.
           </Text>
           <Text fontSize="xl" color="white" align="center">
@@ -145,7 +145,7 @@ export default function Home() {
               Meet Our Guide
             </Text>
             <Text fontSize="lg" my={3}>
-              Hi, I&apos;m Liz, the founder of Langfaring. As a language
+              Hi, I&apos;m Elizabet, the founder of LanguageFaire. As a language
               enthusiast and lifelong learner, I&apos;ve embarked on my own
               journey through the rich tapestry of languages and cultures. Along
               the way, I&apos;ve encountered obstacles, celebrated
@@ -190,7 +190,7 @@ export default function Home() {
             {" "}
             Are you ready to explore new languages or embark on your own
             language journey? Whether you&apos;re learning a new language for
-            travel, work, or personal enrichment, Langfaring provides the
+            travel, work, or personal enrichment, LanguageFaire provides the
             resources, guidance, and support you need to succeed.
           </Text>
           <Text>

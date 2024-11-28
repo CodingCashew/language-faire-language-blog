@@ -145,7 +145,7 @@ export default function Home() {
               Meet Our Guide
             </Text>
             <Text fontSize="lg" my={3}>
-              Hi, I&apos;m Elizabet, the founder of LanguageFaire. As a language
+              Hi, I&apos;m Elizabeth, the founder of LanguageFaire. As a language
               enthusiast and lifelong learner, I&apos;ve embarked on my own
               journey through the rich tapestry of languages and cultures. Along
               the way, I&apos;ve encountered obstacles, celebrated

@@ -1,4 +1,4 @@
-# LanguageFaire
+# Language Faire
 
 Welcome to LanguageFaire, where we dive deep into the fascinating world of languages, language learning, and the rich tapestry of cultures they embody. Our platform is designed to ignite curiosity, foster learning, and spark meaningful conversations about the beauty and diversity of human communication.
 
